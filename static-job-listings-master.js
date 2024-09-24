@@ -6,7 +6,7 @@ $(window).resize(function(){
 
 async function getJson() {
 	const requestURL =
-	  "https:";
+	  "https://raw.githubusercontent.com/cmb347827/static-job-listings-master/refs/heads/main/data.json";
 	const request = new Request(requestURL);
   
 	const response = await fetch(request);
@@ -14,11 +14,10 @@ async function getJson() {
   
 	const data = JSON.parse(dataText);
 	console.log(data);
-	console.log('d');
-	console.log('dfd');
+	
   }
 
 $(window).on('load',function(){
-
+     getJson();
     
 });
