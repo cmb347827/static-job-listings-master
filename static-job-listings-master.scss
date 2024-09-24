@@ -1,0 +1,72 @@
+
+@import '_globals.scss';
+
+
+$colors: (
+  Very Light Gray: hsl(0, 0%, 98%),
+  Very Light Grayish Blue: hsl(236, 33%, 92%),
+  Light Grayish Blue: hsl(233, 11%, 84%),
+  Dark Grayish Blue: hsl(236, 9%, 61%),
+  Very Dark Grayish Blue: hsl(235, 19%, 35%)
+);
+$fallback-color: (
+  Gray99, Gray87 , Gray82, Gray44, SteelBlue4 
+);
+
+@mixin font-color($color, $fallback-color) {
+  color: $fallback-color;
+  color: $color;
+}
+
+@mixin bg-color($color, $fallback-color) {
+  background-color: $fallback-color;
+  background-color: $color;
+}
+
+
+@mixin border-radius($radius...) {
+  border-radius: $radius;
+}
+@mixin margin($args...) {
+  margin: $args;
+}
+@mixin padding($args...) {
+  padding: $args;
+}
+
+
+html{
+  box-sizing: border-box; 
+}
+*,
+::before,
+::after {
+  box-sizing: inherit;
+}
+body{
+  
+  font: {
+    //default 16 px/1rem.
+    size: 1.2rem;
+    weight: $font_weight-normal;
+    
+  }
+}
+.top-z-index{
+  //needed for z-index.
+  position: relative;
+  z-index: 1;
+  opacity:1;
+}
+
+
+
+main{}
+
+
+footer {
+  .attribution {
+    font-size: $font_size-8;
+    text-align: center;
+  }
+}
