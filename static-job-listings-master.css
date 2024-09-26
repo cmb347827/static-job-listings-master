@@ -17,6 +17,13 @@ body {
 
 .outer {
   margin: 5em 0; }
+  .outer section {
+    padding: 2em 1em;
+    margin: 1em 0; }
+    @media screen and (min-width: 768px) {
+      .outer section {
+        padding: 3em 2em;
+        margin: 2em 3em; } }
   .outer footer .attribution {
     font-size: 8px;
     text-align: center; }

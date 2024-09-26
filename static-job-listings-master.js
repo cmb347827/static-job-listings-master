@@ -24,21 +24,31 @@ const addListings=(data)=>{
 	  //console.log('in addlistings:',data);
       data.forEach((item,index)=>{
 		elements.listingsContainer.innerHTML += `
-		    <section class='d-flex flex-md-row flex-column'>
-		      <img src='${item.logo}' alt=''>
-			  <div class='d-flex'>
-		        <div>${item.company} </div>
-				<div>${item.new ? 'NEW!' : ''} </div>
-				<div>${item.featured ? 'FEATURED' :''}</div>
-			  </div>
-			  <div>
-			     ${item.position}
-			  </div>
-			  <div>
-			     <div>${}</div>
-                 <div>${}</div>
-				 <div>${}</div>
-			  </div>
+		    <section class='border d-flex flex-md-row flex-column justify-content-md-between'>
+				<div class='d-flex flex-md-row flex-column'>
+						<img src='${item.logo}' alt='' class='me-4'>
+						<div class='d-flex flex-column'>
+								<div class='d-flex'>
+									<div>${item.company} </div>
+									<div>${item.new ? 'NEW!' : ''} </div>
+									<div>${item.featured ? 'FEATURED' :''}</div>
+								</div>
+								<div>
+									${item.position}
+								</div>
+								<div class='d-flex'>
+									<div>${item.postedAt}</div>
+									<div>${item.contract}</div>
+									<div>${item.location}</div>
+								</div>
+						</div>
+				</div>
+				<div class='ms-md-5 d-flex align-self-md-center'>
+					<div>${item.role}</div>
+					<div>${item.level}</div>
+					<div>${item.languages}</div>
+					<div>${item.tools}</div>
+				</div>
 		    </section>
 	    `;
 	  });

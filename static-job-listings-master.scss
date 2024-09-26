@@ -44,7 +44,6 @@ html{
   box-sizing: inherit;
 }
 body{
-  
   font: {
     //default 16 px/1rem.
     size: 1.2rem;
@@ -60,11 +59,20 @@ body{
 }
 
 .outer{
+      
       @include margin(5em 0);
-
+      section{
+          @include padding(2em 1em);
+          @include margin(1em 0);
+          @media screen and(min-width:768px){
+              @include padding(3em 2em);
+              @include margin(2em 3em);
+          }
+          
+      }
    
 
-      footer {
+      footer {  
         .attribution {
           font-size: $font_size-8;
           text-align: center;
