@@ -59,14 +59,15 @@ body{
   opacity:1;
 }
 
+.outer{
+      @include margin(5em 0);
 
+   
 
-main{}
-
-
-footer {
-  .attribution {
-    font-size: $font_size-8;
-    text-align: center;
-  }
+      footer {
+        .attribution {
+          font-size: $font_size-8;
+          text-align: center;
+        }
+      }
 }

@@ -15,8 +15,10 @@ body {
   z-index: 1;
   opacity: 1; }
 
-footer .attribution {
-  font-size: 8px;
-  text-align: center; }
+.outer {
+  margin: 5em 0; }
+  .outer footer .attribution {
+    font-size: 8px;
+    text-align: center; }
 
 /*# sourceMappingURL=static-job-listings-master.css.map */
