@@ -61,7 +61,12 @@ body{
 .outer{
       
       @include margin(5em 0);
-      section{
+      header{
+          input[type='search']{
+              border:none;
+          }
+      }
+      section,header{
           @include padding(2em 1em);
           @include margin(1em 0);
           @media screen and(min-width:768px){

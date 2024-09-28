@@ -5,7 +5,7 @@ $(window).resize(function(){
 });
 const elements = {
 	listingsContainer : document.querySelector('#js-job-listings'),
-    
+    searchTerms: document.querySelector('#listings-search'),
 }
 
 
@@ -53,6 +53,13 @@ const addListings=(data)=>{
 	    `;
 	  });
 };
+const getSearch=()=>{
+   console.log(elements.searchTerms.value);
+}
+
+$( "#listings-search" ).on( "keyup", function() {
+	getSearch();
+} );
 
 $(window).on('load',function(){
     fetchAsync();

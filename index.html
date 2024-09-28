@@ -15,8 +15,12 @@
 <body>
     
     <div class="outer d-flex flex-column ">
-        <header title="search for a job listing">
+        <header title="search for a job listing" class='border'>
           <!--search-->
+          <form>
+            <label class='visually-hidden form-label' for="listings-search">Search the listings:</label>
+            <input class='form-control' type="search" id="listings-search" name="listings-search" />
+          </form>
         </header>
         
         <main>

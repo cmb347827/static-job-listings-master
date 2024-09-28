@@ -17,11 +17,13 @@ body {
 
 .outer {
   margin: 5em 0; }
-  .outer section {
+  .outer header input[type='search'] {
+    border: none; }
+  .outer section, .outer header {
     padding: 2em 1em;
     margin: 1em 0; }
     @media screen and (min-width: 768px) {
-      .outer section {
+      .outer section, .outer header {
         padding: 3em 2em;
         margin: 2em 3em; } }
   .outer footer .attribution {
