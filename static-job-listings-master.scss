@@ -3,14 +3,11 @@
 
 
 $colors: (
-  Very Light Gray: hsl(0, 0%, 98%),
-  Very Light Grayish Blue: hsl(236, 33%, 92%),
-  Light Grayish Blue: hsl(233, 11%, 84%),
-  Dark Grayish Blue: hsl(236, 9%, 61%),
-  Very Dark Grayish Blue: hsl(235, 19%, 35%)
+  Desaturated Dark Cyan: hsl(180, 29%, 50%),
+
 );
 $fallback-color: (
-  Gray99, Gray87 , Gray82, Gray44, SteelBlue4 
+  CadetBlue, 
 );
 
 @mixin font-color($color, $fallback-color) {
@@ -64,6 +61,17 @@ body{
       header{
           input[type='search']{
               border:none;
+              /* &::-webkit-search-cancel-button,&::-moz-search-cancel-button,&::-ms-search-cancel-button,&::-o-search-cancel-button,&::-search-cancel-button{
+                 display:none;
+              }*/
+              &::-webkit-search-cancel-button{
+                -webkit-appearance: none;
+                height: 1em;
+                width: 1em;
+                background:green url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+                background-size: cover;
+                color:white;
+              }
           }
       }
       section,header{

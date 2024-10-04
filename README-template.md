@@ -48,7 +48,34 @@ Users should be able to:
 
 ### What I learned
 
+- After first trying and failing to add input of type search everytime a user clicks the spacebar in the header by adding them using `elements.outerSearch.innerHTML += `<search class="outer-search">
+	                      <label for='search-term${vars.searchId}' class='visually-hidden'>Search term ${vars.searchId}</label>
+			              <input class='border me-3' type='search' id='search-term${vars.searchId}' name='searchterm-item'>
+					</search>`;`
+  I finally found a stackoverflow post explaining the use of insertAdjacentHTML and 'beforeend'.
+- I found how to access the input close button using the `::-webkit-search-cancel-button` pseudoselector. As MDN said it's 'non-standard' , I added vendor prefixes to apply this. 
+- I misunderstood the design at first and thought the search bar on top was where you'd enter search options 
+  My old code was based on that : 
 
+  ```
+     function addSearch() {
+	      vars.searchId=++vars.searchId;
+	      const search = `<search class="outer-search me-1 me-md-3">
+	                      <label for='search-term${vars.searchId}' class='visually-hidden'>Search term ${vars.searchId}</label>
+			                  <input placeholder="Search" class='border' type='search' id='search-term${vars.searchId}' name='searchterm-item'>
+					            </search>`;
+	      elements.outerSearch.insertAdjacentHTML("beforeend", search );
+     }
+
+     $( "#outer-search" ).on( "keyup", function(event) {
+	
+	      if (event.code === 'Space') {
+		        addSearch();
+	      }
+     });
+
+  ```
+  
 
   
  

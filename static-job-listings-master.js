@@ -5,9 +5,11 @@ $(window).resize(function(){
 });
 const elements = {
 	listingsContainer : document.querySelector('#js-job-listings'),
-    searchTerms: document.querySelector('#listings-search'),
+	filteredListings:document.querySelector('#filtered-listings'),
 }
-
+let vars={
+	filterId: 0,
+}
 
 
 async function fetchAsync () {
@@ -43,27 +45,39 @@ const addListings=(data)=>{
 								</div>
 						</div>
 				</div>
-				<div class='ms-md-5 d-flex align-self-md-center'>
-					<div>${item.role}</div>
-					<div>${item.level}</div>
-					<div>${item.languages}</div>
-					<div>${item.tools}</div>
-				</div>
+				<ul class='ms-md-5 d-flex align-self-md-center nav nav-tabs'>
+					<li class="nav-item"><a class="nav-link searchitem">${item.role}</a></li>
+					<li class="nav-item"><a class="nav-link searchitem">${item.level}</a></li>
+					<li class="nav-item"><a class="nav-link searchitem">${item.languages}</a></li>
+					<li class="nav-item"><a class="nav-link searchitem">${item.tools}</a></li>
+				</ul>
 		    </section>
 	    `;
 	  });
+	  addListener();
 };
-const getSearch=()=>{
-   console.log(elements.searchTerms.value);
+function addFilter(linktext) {
+	vars.filterId=++vars.filterId;
+	const output = `<form class="outer-search me-1 me-md-3">
+			              <input class='border' type='hidden' id='search-term${vars.searchId}' name='search-term${vars.searchId}'>
+					      <output name='result' for='search-term${vars.searchId}'>${linktext}</output>
+					</form>`;
+	elements.filteredListings.insertAdjacentHTML("beforeend", output );
 }
 
-$( "#listings-search" ).on( "keyup", function() {
-	getSearch();
-} );
+function addListener(){
+	[...document.querySelectorAll('.searchitem')].forEach(function(item) {
+		item.addEventListener('click', function() {
+			console.log($(this).text());
+			//pass the link text to addFilter
+            addFilter($(this).text());
+		});
+	});
+}
 
 $(window).on('load',function(){
-    fetchAsync();
 	
+    fetchAsync();
     
 
 });
