@@ -21,6 +21,13 @@ async function fetchAsync () {
 	addListings(data);
 }
 
+/*const returnArray=(which)=>{
+	const aArray=[];
+	for(let i=0;i<which.length;++i){
+		aArray.push(`<li class="nav-item"><a class="nav-link searchitem">${which[i]}</a></li>`);
+	}
+    return aArray;
+}*/
 
 const addListings=(data)=>{
 	  //console.log('in addlistings:',data);
@@ -48,13 +55,17 @@ const addListings=(data)=>{
 				<ul class='ms-md-5 d-flex align-self-md-center nav nav-tabs'>
 					<li class="nav-item"><a class="nav-link searchitem">${item.role}</a></li>
 					<li class="nav-item"><a class="nav-link searchitem">${item.level}</a></li>
-					<li class="nav-item"><a class="nav-link searchitem">${item.languages}</a></li>
-					<li class="nav-item"><a class="nav-link searchitem">${item.tools}</a></li>
+					<li class='nav-item d-flex'>${item.languages.map(elmt => `
+						<a class='nav-link searchitem'>${elmt}</a>
+					`).join('')}</li>
+					<li class='nav-item d-flex'>${item.tools.map(elmt => `
+						<a class='nav-link searchitem'>${elmt}</a>
+					`).join('')}</li>
 				</ul>
 		    </section>
 	    `;
 	  });
-	  addListener();
+	  addListener(); 
 };
 function addFilter(linktext) {
 	vars.filterId=++vars.filterId;
@@ -68,7 +79,6 @@ function addFilter(linktext) {
 function addListener(){
 	[...document.querySelectorAll('.searchitem')].forEach(function(item) {
 		item.addEventListener('click', function() {
-			console.log($(this).text());
 			//pass the link text to addFilter
             addFilter($(this).text());
 		});

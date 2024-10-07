@@ -52,8 +52,7 @@ Users should be able to:
 	                      <label for='search-term${vars.searchId}' class='visually-hidden'>Search term ${vars.searchId}</label>
 			              <input class='border me-3' type='search' id='search-term${vars.searchId}' name='searchterm-item'>
 					</search>`;`
-  I finally found a stackoverflow post explaining the use of insertAdjacentHTML and 'beforeend'.
-- I found how to access the input close button using the `::-webkit-search-cancel-button` pseudoselector. As MDN said it's 'non-standard' , I added vendor prefixes to apply this. 
+  I finally found a stackoverflow post explaining the use of insertAdjacentHTML and 'beforeend' (see link 1)
 - I misunderstood the design at first and thought the search bar on top was where you'd enter search options 
   My old code was based on that : 
 
@@ -75,7 +74,21 @@ Users should be able to:
      });
 
   ```
+- I first use a separate function to return the JSON file languages or tools data in `addListings()`.
+  Like so `<div class='d-flex'>${returnArray(item.languages)}</div>;`
   
+  ```
+    const returnArray=(which)=>{
+	    const aArray=[];
+	    for(let i=0;i<which.length;++i){
+		    aArray.push(`<li class="nav-item"><a class="nav-link searchitem">${which[i]}</a></li>`);
+	    }
+      return aArray;
+    }
+    
+  ```
+  But then `addListings()` added the backticks .
+  I found a stackoverflow post that explainded how to do this better using `map()`(see link 2)
 
   
  
