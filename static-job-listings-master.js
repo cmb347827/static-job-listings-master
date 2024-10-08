@@ -75,7 +75,12 @@ function addFilter(linktext) {
 	
 }
 const removeSearch=(e)=>{
-	console.log(e.currentTarget);
+	//console.log(e.currentTarget.parentElement);
+    e.currentTarget.parentElement.remove();
+	//remove from allSearchTerms
+	console.log(vars.allSearchTerms,e.currentTarget.parentElement.firstChild);
+	let indexSearchTerm= vars.allSearchTerms.indexOf(e.currentTarget.parentElement.firstChild);
+	console.log(indexSearchTerm);
 }
 function addListener(){
 	[...document.querySelectorAll('.search-item')].forEach(function(item) {
