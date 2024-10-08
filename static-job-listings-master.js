@@ -21,14 +21,6 @@ async function fetchAsync () {
 	addListings(data);
 }
 
-/*const returnArray=(which)=>{
-	const aArray=[];
-	for(let i=0;i<which.length;++i){
-		aArray.push(`<li class="nav-item"><a class="nav-link searchitem">${which[i]}</a></li>`);
-	}
-    return aArray;
-}*/
-
 const addListings=(data)=>{
 	  //console.log('in addlistings:',data);
       data.forEach((item,index)=>{
@@ -53,13 +45,13 @@ const addListings=(data)=>{
 						</div>
 				</div>
 				<ul class='ms-md-5 d-flex align-self-md-center nav nav-tabs'>
-					<li class="nav-item"><a class="nav-link searchitem">${item.role}</a></li>
-					<li class="nav-item"><a class="nav-link searchitem">${item.level}</a></li>
+					<li class="nav-item"><a class="nav-link search-item">${item.role}</a></li>
+					<li class="nav-item"><a class="nav-link search-item">${item.level}</a></li>
 					<li class='nav-item d-flex'>${item.languages.map(elmt => `
-						<a class='nav-link searchitem'>${elmt}</a>
+						<a class='nav-link search-item'>${elmt}</a>
 					`).join('')}</li>
 					<li class='nav-item d-flex'>${item.tools.map(elmt => `
-						<a class='nav-link searchitem'>${elmt}</a>
+						<a class='nav-link search-item'>${elmt}</a>
 					`).join('')}</li>
 				</ul>
 		    </section>
@@ -70,23 +62,35 @@ const addListings=(data)=>{
 function addFilter(linktext) {
 	vars.filterId=++vars.filterId;
 	const output = `<form class="outer-search me-1 me-md-3">
-			              <input class='border' type='hidden' id='search-term${vars.searchId}' name='search-term${vars.searchId}'>
-					      <output name='result' for='search-term${vars.searchId}'>${linktext}</output>
+			            <input class='border' type='hidden' id='search-term${vars.searchId}' name='search-term${vars.searchId}'>
+					    <output name='result' for='search-term${vars.searchId}'>
+						    ${linktext}<button data-remove-button-id="${vars.searchId}" type='button' class='btn close'><i class="fa-solid fa-square-xmark"></i></button>
+						</output>
 					</form>`;
 	elements.filteredListings.insertAdjacentHTML("beforeend", output );
-}
 
+	const removeBtn = document.querySelector(`[data-remove-button-id="${vars.searchId}"]`);
+
+	removeBtn.addEventListener('click',removeSearch);
+	
+}
+const removeSearch=(e)=>{
+	console.log(e.currentTarget);
+}
 function addListener(){
-	[...document.querySelectorAll('.searchitem')].forEach(function(item) {
+	[...document.querySelectorAll('.search-item')].forEach(function(item) {
 		item.addEventListener('click', function() {
 			//pass the link text to addFilter
             addFilter($(this).text());
+			//avoid double adds
+
 		});
 	});
+	
 }
 
 $(window).on('load',function(){
-	
+
     fetchAsync();
     
 
