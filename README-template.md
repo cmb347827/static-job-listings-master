@@ -74,6 +74,7 @@ Users should be able to:
      });
 
   ```
+  When I asked for clarification at discord they said that the design was to click the tabs on the listings and then the search terms appear on top
 - I first use a separate function to return the JSON file languages or tools data in `addListings()`.
   Like so `<div class='d-flex'>${returnArray(item.languages)}</div>;`
   
@@ -89,7 +90,7 @@ Users should be able to:
   ```
   But then `addListings()` added the backticks .
   I found a stackoverflow post that explainded how to do this better using `map()`(see link 2)
-
+- I also could use some pointers from a stackoverflow post how to add a listener to each close button for selected search terms , in order to avoid having to add another `querySelectorAll()` again , which is probably not the most efficient (see link 3)
   
  
 ### Continued development
@@ -97,7 +98,9 @@ Users should be able to:
 - Daily tutorials and projects in HTML5, CSS3, Javascript, Bootstrap, Sass/SCSS. For now, in time I will go re-learn React ect.
 
 ### Useful resources
-
+[preserve input values after dynamically adding elements](https://stackoverflow.com/questions/30798315/preserve-input-values-after-dynamically-adding-an-input-field)
+[template literals to insert iterated array values](https://stackoverflow.com/questions/50574786/simple-javascript-template-literals-to-insert-iterated-values-e-g-array-elemen)
+[addEventListener to button inside template literal](https://stackoverflow.com/questions/53556671/add-event-listener-to-button-inside-template-literal)
  
 
 ## Author

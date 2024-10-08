@@ -9,6 +9,7 @@ const elements = {
 }
 let vars={
 	filterId: 0,
+	allSearchTerms:[],
 }
 
 
@@ -62,15 +63,14 @@ const addListings=(data)=>{
 function addFilter(linktext) {
 	vars.filterId=++vars.filterId;
 	const output = `<form class="outer-search me-1 me-md-3">
-			            <input class='border' type='hidden' id='search-term${vars.searchId}' name='search-term${vars.searchId}'>
-					    <output name='result' for='search-term${vars.searchId}'>
-						    ${linktext}<button data-remove-button-id="${vars.searchId}" type='button' class='btn close'><i class="fa-solid fa-square-xmark"></i></button>
+			            <input class='border' type='hidden' id='search-term${vars.filterId}' name='search-term${vars.filterId}'>
+					    <output name='result' for='search-term${vars.filterId}'>
+						    ${linktext}<button data-remove-button-id="${vars.filterId}" type='button' class='btn close'><i class="fa-solid fa-square-xmark"></i></button>
 						</output>
 					</form>`;
 	elements.filteredListings.insertAdjacentHTML("beforeend", output );
 
-	const removeBtn = document.querySelector(`[data-remove-button-id="${vars.searchId}"]`);
-
+	const removeBtn = document.querySelector(`[data-remove-button-id="${vars.filterId}"]`);
 	removeBtn.addEventListener('click',removeSearch);
 	
 }
@@ -80,10 +80,14 @@ const removeSearch=(e)=>{
 function addListener(){
 	[...document.querySelectorAll('.search-item')].forEach(function(item) {
 		item.addEventListener('click', function() {
-			//pass the link text to addFilter
-            addFilter($(this).text());
 			//avoid double adds
-
+			const includesTerm= vars.allSearchTerms.includes($(this).text());
+			if(includesTerm===false){
+                vars.allSearchTerms.push($(this).text());
+				//is oke, pass the link text to addFilter
+				addFilter($(this).text());
+			}
+            
 		});
 	});
 	
