@@ -61,26 +61,31 @@ const addListings=(data)=>{
 	  addListener(); 
 };
 function addFilter(linktext) {
+	//add search terms (to filter results) at top output
 	vars.filterId=++vars.filterId;
 	const output = `<form class="outer-search me-1 me-md-3">
 			            <input class='border' type='hidden' id='search-term${vars.filterId}' name='search-term${vars.filterId}'>
-					    <output name='result' for='search-term${vars.filterId}'>
-						    ${linktext}<button data-remove-button-id="${vars.filterId}" type='button' class='btn close'><i class="fa-solid fa-square-xmark"></i></button>
+					    <output name='result' for='search-term${vars.filterId}'>${linktext}<button data-remove-button-id="${vars.filterId}" type='button' class='btn close'><i class="fa-solid fa-square-xmark"></i></button>
 						</output>
 					</form>`;
 	elements.filteredListings.insertAdjacentHTML("beforeend", output );
-
+    
+	//add data attribute id value to the last added search term delete button.
 	const removeBtn = document.querySelector(`[data-remove-button-id="${vars.filterId}"]`);
-	removeBtn.addEventListener('click',removeSearch);
-	
+	//addeventListener to the last added search term delete button
+	removeBtn.addEventListener('click',removeSearch(linktext));
+
 }
-const removeSearch=(e)=>{
-	//console.log(e.currentTarget.parentElement);
-    e.currentTarget.parentElement.remove();
-	//remove from allSearchTerms
-	console.log(vars.allSearchTerms,e.currentTarget.parentElement.firstChild);
-	let indexSearchTerm= vars.allSearchTerms.indexOf(e.currentTarget.parentElement.firstChild);
-	console.log(indexSearchTerm);
+const removeSearch =(linktext)=>{
+	return function curried_func(e) {
+		//delete search term at page top output 
+		e.currentTarget.parentElement.remove();
+        //console.log(linktext,e.currentTarget.parentElement.firstChild);
+		//find index of search term in allSearchTerms in order to delete it from array , so its possible to reselect the same term again.
+		let indexSearchTerm= vars.allSearchTerms.indexOf(linktext);
+	    vars.allSearchTerms.splice(indexSearchTerm,1);
+    }
+	
 }
 function addListener(){
 	[...document.querySelectorAll('.search-item')].forEach(function(item) {
