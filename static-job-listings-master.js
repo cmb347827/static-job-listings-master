@@ -6,6 +6,7 @@ $(window).resize(function(){
 const elements = {
 	listingsContainer : document.querySelector('#js-job-listings'),
 	filteredListings:document.querySelector('#filtered-listings'),
+	data:{},
 }
 let vars={
 	filterId: 0,
@@ -17,14 +18,30 @@ async function fetchAsync () {
 	// await response of fetch call
 	let response = await fetch('https://raw.githubusercontent.com/cmb347827/static-job-listings-master/refs/heads/main/data.json');
 	// only proceed once promise is resolved
-	const data= await response.json()
+	elements.data= await response.json()
 	// only proceed once second promise is resolved
-	addListings(data);
+	addListings();
 }
 
-const addListings=(data)=>{
-	  //console.log('in addlistings:',data);
-      data.forEach((item,index)=>{
+const filterData =()=>{
+    const tempData = elements.data;
+	let included=false;
+	tempData.forEach((item)=>{
+        //filter vars.allSearchTerms
+		//${item.role}
+		//${item.level}
+		//${item.languages}
+		//${item.tools}
+		included=vars.allSearchTerms.includes(item.role || item.level);
+		
+		if(included){
+			console.log('ya');
+		}
+	});
+};
+const addListings=()=>{
+	  //add job listings from json data
+      elements.data.forEach((item,index)=>{
 		elements.listingsContainer.innerHTML += `
 		    <section class='border d-flex flex-md-row flex-column justify-content-md-between'>
 				<div class='d-flex flex-md-row flex-column'>
@@ -98,6 +115,7 @@ function addListener(){
 				addFilter($(this).text());
 			}
             
+			filterData();
 		});
 	});
 	
