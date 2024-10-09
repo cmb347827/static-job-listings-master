@@ -27,40 +27,56 @@ async function fetchAsync () {
 const filterData =()=>{
 	let included=false;
 	
-	elements.data.forEach((item)=>{
-		included=vars.allSearchTerms.includes(item.role);
+	elements.data.forEach((outeritem)=>{
+		included=vars.allSearchTerms.includes(outeritem.role);
+		//console.log('item',item.role, 'included',included);
 		if(included) {
-			vars.filterData.push(item);
+			vars.filterData.push(outeritem);
 			return included===true;
 		}
-		included=vars.allSearchTerms.includes(item.level);
+		included=vars.allSearchTerms.includes(outeritem.level);
+		//console.log('item',item.level, 'included',included);
 		if(included) {
-			vars.filterData.push(item);
+			vars.filterData.push(outeritem);
 			return included===true;
 		}
-		item.languages.forEach((item)=>{
+		outeritem.languages.forEach((item)=>{
            included =vars.allSearchTerms.includes(item);
+           if(included) {
+				vars.filterData.push(outeritem);
+				return included===true;
+		    }
 		});
-        if(included) {
+		//console.log('item',item.languages, 'included',included);
+        /*if(included) {
 			vars.filterData.push(item);
 			return included===true;
-		}
-		item.tools.forEach((item)=>{
+		}*/
+		outeritem.tools.forEach((item)=>{
            included=vars.allSearchTerms.includes(item);
+           if(included) {
+			  vars.filterData.push(outeritem);
+			  return included===true;
+		   }
 		});
-		if(included) {
+		//console.log('item',item.tools, 'included',included);
+		/*if(included) {
 			vars.filterData.push(item);
 			return included===true;
-		}
+		}*/
+		//console.log("--------------------------NEXT-----------------------------------");
 	});
 	console.log('filterdata',vars.filterData);
 };
 const addListings=(which)=>{
 	  //add job listings from json data
+	  console.log('vars filterdata',vars.filterData);
 	  const data= (which==='non-filtered') ? elements.data : vars.filterData;
-	  console.log('in add listings',data);
+	  //console.log('in add listings',data);
+	  //clear listingsContainer.innerHTML for new reload
 	  elements.listingsContainer.innerHTML='';
-	  //vars.filterData=[];  ?
+	  //clear filterData for next time the user adds a searchterm, and a new addListings() will be called with new filterdata including the new searchterm results
+	  vars.filterData=[];  
 	  
       data.forEach((item,index)=>{
 		elements.listingsContainer.innerHTML += `
@@ -122,8 +138,10 @@ const removeSearch =(linktext)=>{
 		//find index of search term in allSearchTerms in order to delete it from array , so its possible to reselect the same term again.
 		let indexSearchTerm= vars.allSearchTerms.indexOf(linktext);
 	    vars.allSearchTerms.splice(indexSearchTerm,1);
+		//update visible filter listings
+		filterData();
+		addListings('filtered');
     }
-	
 }
 function addListener(){
 	[...document.querySelectorAll('.search-item')].forEach(function(item) {
@@ -135,7 +153,7 @@ function addListener(){
 				//is oke, pass the link text to addFilter
 				addFilter($(this).text());
 			}
-            
+            console.log('in addlisten',vars.allSearchTerms);
 			filterData();
 			addListings('filtered');
 		});
