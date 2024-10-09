@@ -90,7 +90,8 @@ Users should be able to:
   ```
   But then `addListings()` added the backticks .
   I found a stackoverflow post that explainded how to do this better using `map()`(see link 2)
-- I also could use some pointers from a stackoverflow post how to add a listener to each close button for selected search terms , in order to avoid having to add another `querySelectorAll()` again , which is probably not the most efficient (see link 3)
+- I also could use some pointers from a stackoverflow post how to add a listener to each close button for selected search terms , in order to avoid having to add a `querySelectorAll()`  after each search term is added to `<output>`, which is probably not the most efficient, instead I could simply make us of data attributes (see link 3).
+- I wanted to 'short circuit' `forEach()` in `filterData()`, as as soon as a term is found in a listing, that listing should be included and there's no need to continue to assess that listing. And found a stackoverflow post that explained the use of `some()` instead, which returns true as soon as any of the callbacks, executed in array order, return true, short-circuiting the execution of the rest (see link 4). But then, I realized it only will return the first result then, and that was still not what I had I mind. I did realize I could keep the rest of my `some()` code with the returns on true, and just switch back to `forEach()`.
   
  
 ### Continued development
@@ -101,7 +102,7 @@ Users should be able to:
 [preserve input values after dynamically adding elements](https://stackoverflow.com/questions/30798315/preserve-input-values-after-dynamically-adding-an-input-field)
 [template literals to insert iterated array values](https://stackoverflow.com/questions/50574786/simple-javascript-template-literals-to-insert-iterated-values-e-g-array-elemen)
 [addEventListener to button inside template literal](https://stackoverflow.com/questions/53556671/add-event-listener-to-button-inside-template-literal)
- 
+[shortciruit forEach](https://stackoverflow.com/questions/2641347/short-circuit-array-foreach-like-calling-break)
 
 ## Author
 

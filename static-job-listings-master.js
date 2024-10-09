@@ -11,6 +11,7 @@ const elements = {
 let vars={
 	filterId: 0,
 	allSearchTerms:[],
+	filterData:[],
 }
 
 
@@ -20,28 +21,48 @@ async function fetchAsync () {
 	// only proceed once promise is resolved
 	elements.data= await response.json()
 	// only proceed once second promise is resolved
-	addListings();
+	addListings('non-filtered');
 }
 
 const filterData =()=>{
-    const tempData = elements.data;
 	let included=false;
-	tempData.forEach((item)=>{
-        //filter vars.allSearchTerms
-		//${item.role}
-		//${item.level}
-		//${item.languages}
-		//${item.tools}
-		included=vars.allSearchTerms.includes(item.role || item.level);
-		
-		if(included){
-			console.log('ya');
+	
+	elements.data.forEach((item)=>{
+		included=vars.allSearchTerms.includes(item.role);
+		if(included) {
+			vars.filterData.push(item);
+			return included===true;
+		}
+		included=vars.allSearchTerms.includes(item.level);
+		if(included) {
+			vars.filterData.push(item);
+			return included===true;
+		}
+		item.languages.forEach((item)=>{
+           included =vars.allSearchTerms.includes(item);
+		});
+        if(included) {
+			vars.filterData.push(item);
+			return included===true;
+		}
+		item.tools.forEach((item)=>{
+           included=vars.allSearchTerms.includes(item);
+		});
+		if(included) {
+			vars.filterData.push(item);
+			return included===true;
 		}
 	});
+	console.log('filterdata',vars.filterData);
 };
-const addListings=()=>{
+const addListings=(which)=>{
 	  //add job listings from json data
-      elements.data.forEach((item,index)=>{
+	  const data= (which==='non-filtered') ? elements.data : vars.filterData;
+	  console.log('in add listings',data);
+	  elements.listingsContainer.innerHTML='';
+	  //vars.filterData=[];  ?
+	  
+      data.forEach((item,index)=>{
 		elements.listingsContainer.innerHTML += `
 		    <section class='border d-flex flex-md-row flex-column justify-content-md-between'>
 				<div class='d-flex flex-md-row flex-column'>
@@ -116,6 +137,7 @@ function addListener(){
 			}
             
 			filterData();
+			addListings('filtered');
 		});
 	});
 	
