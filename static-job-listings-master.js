@@ -140,7 +140,11 @@ const removeSearch =(linktext)=>{
 	    vars.allSearchTerms.splice(indexSearchTerm,1);
 		//update visible filter listings
 		filterData();
-		addListings('filtered');
+		if(vars.allSearchTerms.length>=1){
+			addListings('filtered');
+		 }else{
+			addListings('non-filtered');
+		 }
     }
 }
 function addListener(){
@@ -155,7 +159,11 @@ function addListener(){
 			}
             console.log('in addlisten',vars.allSearchTerms);
 			filterData();
-			addListings('filtered');
+			if(vars.allSearchTerms.length>=1){
+			   addListings('filtered');
+			}else{
+			   addListings('non-filtered');
+			}
 		});
 	});
 	
