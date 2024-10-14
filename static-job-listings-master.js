@@ -5,8 +5,9 @@ $(window).resize(function(){
 });
 const elements = {
 	listingsContainer : document.querySelector('#js-job-listings'),
-	filteredListings:document.querySelector('#filtered-listings'),
+	filters:document.querySelector('#filters'),
 	data:{},
+	resultsContainer: document.querySelector('#results'),
 }
 let vars={
 	filterId: 0,
@@ -32,39 +33,28 @@ const filterData =()=>{
 		//console.log('item',item.role, 'included',included);
 		if(included) {
 			vars.filterData.push(outeritem);
-			return included===true;
+			return included;
 		}
 		included=vars.allSearchTerms.includes(outeritem.level);
 		//console.log('item',item.level, 'included',included);
 		if(included) {
 			vars.filterData.push(outeritem);
-			return included===true;
+			return included;
 		}
-		outeritem.languages.forEach((item)=>{
+		outeritem.languages.some((item)=>{
            included =vars.allSearchTerms.includes(item);
            if(included) {
 				vars.filterData.push(outeritem);
-				return included===true;
+				return included;
 		    }
 		});
-		//console.log('item',item.languages, 'included',included);
-        /*if(included) {
-			vars.filterData.push(item);
-			return included===true;
-		}*/
-		outeritem.tools.forEach((item)=>{
+		outeritem.tools.some((item)=>{
            included=vars.allSearchTerms.includes(item);
            if(included) {
 			  vars.filterData.push(outeritem);
-			  return included===true;
+			  return included;
 		   }
 		});
-		//console.log('item',item.tools, 'included',included);
-		/*if(included) {
-			vars.filterData.push(item);
-			return included===true;
-		}*/
-		//console.log("--------------------------NEXT-----------------------------------");
 	});
 	console.log('filterdata',vars.filterData);
 };
@@ -72,14 +62,14 @@ const addListings=(which)=>{
 	  //add job listings from json data
 	  console.log('vars filterdata',vars.filterData);
 	  const data= (which==='non-filtered') ? elements.data : vars.filterData;
-	  //console.log('in add listings',data);
+	  const container = (filterData.length>0) ? elements.resultsContainer : elements.listingsContainer;
 	  //clear listingsContainer.innerHTML for new reload
 	  elements.listingsContainer.innerHTML='';
 	  //clear filterData for next time the user adds a searchterm, and a new addListings() will be called with new filterdata including the new searchterm results
 	  vars.filterData=[];  
 	  
       data.forEach((item,index)=>{
-		elements.listingsContainer.innerHTML += `
+		container.innerHTML += `
 		    <section class='border d-flex flex-md-row flex-column justify-content-md-between'>
 				<div class='d-flex flex-md-row flex-column'>
 						<img src='${item.logo}' alt='' class='me-4'>
@@ -117,12 +107,12 @@ const addListings=(which)=>{
 function addFilter(linktext) {
 	//add search terms (to filter results) at top output
 	vars.filterId=++vars.filterId;
-	const output = `<form class="outer-search me-1 me-md-3">
-			            <input class='border' type='hidden' id='search-term${vars.filterId}' name='search-term${vars.filterId}'>
+	const output = `<form class="outer-search me-1 me-md-3 border">
+			            <input type='hidden' id='search-term${vars.filterId}' name='search-term${vars.filterId}'>
 					    <output name='result' for='search-term${vars.filterId}'>${linktext}<button data-remove-button-id="${vars.filterId}" type='button' class='btn close'><i class="fa-solid fa-square-xmark"></i></button>
 						</output>
 					</form>`;
-	elements.filteredListings.insertAdjacentHTML("beforeend", output );
+	elements.filters.insertAdjacentHTML("beforeend", output );
     
 	//add data attribute id value to the last added search term delete button.
 	const removeBtn = document.querySelector(`[data-remove-button-id="${vars.filterId}"]`);
