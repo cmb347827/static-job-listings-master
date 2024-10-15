@@ -71,9 +71,11 @@ const addListings=(which)=>{
 	  
       data.forEach((item,index)=>{
 		container.innerHTML += `
-		    <section class='border d-flex flex-md-row flex-column justify-content-md-between'>
-				<div class='d-flex flex-md-row flex-column'>
-						<img src='${item.logo}' alt='' class='me-4'>
+		    <section class='border d-flex flex-md-row flex-column justify-content-md-between align-items-md-center me-2'>
+				<div class='d-flex flex-md-row align-items-md-center flex-column'>
+				        <div class='svg-outer'>
+						   <img src='${item.logo}' alt='' class='svg-100 me-4'>
+						</div>
 						<div class='d-flex flex-column'>
 								<div class='d-flex'>
 									<div>${item.company} </div>
@@ -173,6 +175,7 @@ function addListener(){
 	});
 	
 }
+
 
 $(window).on('load',function(){
 

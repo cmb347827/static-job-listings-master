@@ -15,6 +15,18 @@ body {
   z-index: 1;
   opacity: 1; }
 
+.svg-outer {
+  max-width: 10%;
+  max-height: 10%; }
+  @media screen and (min-width: 768px) {
+    .svg-outer {
+      max-width: 30%;
+      max-height: 30%; } }
+
+.svg-100 {
+  width: 100%;
+  height: 100%; }
+
 .outer {
   margin: 5em 0; }
   .outer header input[type='search'] {
