@@ -73,6 +73,11 @@ body{
                 color:white;
               }
           }
+          .clearButton{
+              position:absolute;
+              width: 100px;
+              right:1em;
+          }
       }
       section,header{
           @include padding(2em 1em);

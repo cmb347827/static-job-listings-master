@@ -122,7 +122,7 @@ function addFilter(linktext) {
 						</output>
 					</form>`;
 	elements.filters.insertAdjacentHTML("afterbegin", output );
-	const clearBtn=`<button type="button" class="btn clearButton">Clear</button>`;
+	const clearBtn=`<button type="button" class="btn clearButton border">Clear</button>`;
 	if(vars.clearBtnAdded===false){
 		elements.filters.insertAdjacentHTML('beforeend',clearBtn);
 		vars.clearBtnAdded=true;

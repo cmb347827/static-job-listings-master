@@ -29,6 +29,10 @@ body {
       background: green url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
       background-size: cover;
       color: white; }
+  .outer header .clearButton {
+    position: absolute;
+    width: 100px;
+    right: 1em; }
   .outer section, .outer header {
     padding: 2em 1em;
     margin: 1em 0; }
