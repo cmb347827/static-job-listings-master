@@ -13,6 +13,7 @@ let vars={
 	filterId: 0,
 	allSearchTerms:[],
 	filterData:[],
+	clearBtnAdded: false,
 }
 
 
@@ -104,6 +105,14 @@ const addListings=(which)=>{
 	  });
 	  addListener(); 
 };
+
+const clearFilters=()=>{
+	console.log('clear filters');
+	//remove filters
+	elements.filters.innerHTML='';
+	addListings('non-filtered');
+
+}
 function addFilter(linktext) {
 	//add search terms (to filter results) at top output
 	vars.filterId=++vars.filterId;
@@ -112,12 +121,18 @@ function addFilter(linktext) {
 					    <output name='result' for='search-term${vars.filterId}'>${linktext}<button data-remove-button-id="${vars.filterId}" type='button' class='btn close'><i class="fa-solid fa-square-xmark"></i></button>
 						</output>
 					</form>`;
-	elements.filters.insertAdjacentHTML("beforeend", output );
+	elements.filters.insertAdjacentHTML("afterbegin", output );
+	const clearBtn=`<button type="button" class="btn clearButton">Clear</button>`;
+	if(vars.clearBtnAdded===false){
+		elements.filters.insertAdjacentHTML('beforeend',clearBtn);
+		vars.clearBtnAdded=true;
+		document.querySelector('.clearButton').addEventListener('click',clearFilters);
+	}
     
 	//add data attribute id value to the last added search term delete button.
 	const removeBtn = document.querySelector(`[data-remove-button-id="${vars.filterId}"]`);
 	//addeventListener to the last added search term delete button
-	removeBtn.addEventListener('click',removeSearch(linktext));
+	removeBtn.addEventListener('click',removeSearch(linktext), { once: true });
 
 }
 const removeSearch =(linktext)=>{
