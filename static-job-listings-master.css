@@ -43,10 +43,14 @@ body {
   .outer section, .outer header {
     padding: 0.4em;
     margin: 1em 0; }
-    .outer section a, .outer header a {
+    .outer section .tabFont, .outer header .tabFont {
       color: Crystal;
       color: #7b8e8e;
       font-weight: 700; }
+      .outer section .tabFont:hover, .outer section .tabFont__hover, .outer header .tabFont:hover, .outer header .tabFont__hover {
+        background-color: Crystal;
+        background-color: #7b8e8e;
+        color: white; }
     @media screen and (min-width: 768px) {
       .outer section, .outer header {
         padding: 1em; } }

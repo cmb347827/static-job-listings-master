@@ -87,9 +87,13 @@ body{
           @include padding(0.4em);
           @include margin(1em 0);
           
-          a{
+          .tabFont{
             @include font-color(map-get($colors,Dark Grayish Cyan),nth($fallback-color,3));
             font-weight: $font_weight-bold;
+            &:hover,&__hover{
+              @include bg-color(map-get($colors,Dark Grayish Cyan),nth($fallback-color,3));
+              color: white;
+            }
           }
           @media screen and(min-width:768px){
               @include padding(1em);

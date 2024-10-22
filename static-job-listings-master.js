@@ -81,7 +81,7 @@ const addListings=(which)=>{
 						<div class='d-flex flex-column'>
 								<div class='d-flex'>
 									<div>${item.company} </div>
-									<div>${item.new ? 'NEW!' : ''} </div>
+									<div class='tabFont__hover'>${item.new ? 'NEW!' : ''} </div>
 									<div>${item.featured ? 'FEATURED' :''}</div>
 								</div>
 								<div>
@@ -95,13 +95,13 @@ const addListings=(which)=>{
 						</div>
 				</div>
 				<ul class='noborder ms-md-5 d-flex align-self-md-center nav nav-tabs'>
-					<li class="nav-item"><a class="nav-link search-item lightgreenbg me-2">${item.role}</a></li>
-					<li class="nav-item"><a class="nav-link search-item lightgreenbg me-2">${item.level}</a></li>
+					<li class="nav-item"><a class="nav-link search-item lightgreenbg tabFont me-2">${item.role}</a></li>
+					<li class="nav-item"><a class="nav-link search-item lightgreenbg tabFont me-2">${item.level}</a></li>
 					<li class='nav-item d-flex'>${item.languages.map(elmt => `
-						<a class='nav-link search-item lightgreenbg me-2'>${elmt}</a>
+						<a class='nav-link search-item lightgreenbg tabFont me-2'>${elmt}</a>
 					`).join('')}</li>
 					<li class='nav-item d-flex'>${item.tools.map(elmt => `
-						<a class='nav-link search-item lightgreenbg me-2'>${elmt}</a>
+						<a class='nav-link search-item lightgreenbg tabFont me-2'>${elmt}</a>
 					`).join('')}</li>
 				</ul>
 		    </section>
