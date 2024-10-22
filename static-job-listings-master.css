@@ -31,19 +31,38 @@ body {
   border: none; }
 
 .outer {
-  background-color: #effafa; }
+  background-color: PaleTurquoise;
+  background-color: #f7fdfd; }
+  .outer output {
+    display: block; }
+  .outer #banner {
+    height: 7em; }
+    @media screen and (min-width: 768px) {
+      .outer #banner {
+        background: url(./images/bg-header-desktop.svg) no-repeat #7b8e8e; } }
   .outer section, .outer header {
-    padding: 2em 1em;
+    padding: 0.4em;
     margin: 1em 0; }
+    .outer section a, .outer header a {
+      color: Crystal;
+      color: #7b8e8e;
+      font-weight: 700; }
     @media screen and (min-width: 768px) {
       .outer section, .outer header {
-        padding: 3em 2em; } }
-  @media screen and (min-width: 768px) {
-    .outer section {
-      margin-left: 2em;
-      margin-right: 2em; } }
+        padding: 1em; } }
+  .outer section {
+    background-color: PaleTurquoise;
+    background-color: white; }
+    .outer section .lightgreenbg {
+      background-color: PaleTurquoise;
+      background-color: #effafa; }
+    @media screen and (min-width: 768px) {
+      .outer section {
+        margin-left: 2em;
+        margin-right: 2em; } }
   .outer header {
-    background: url(./images/bg-header-mobile.svg) center center/100% 100% #7b8e8e; }
+    background-color: PaleTurquoise;
+    background-color: white; }
     .outer header .clearButton {
       position: absolute;
       width: 100px;
@@ -51,8 +70,7 @@ body {
     @media screen and (min-width: 768px) {
       .outer header {
         margin-left: 2em;
-        margin-right: 0.5em;
-        background: url(./images/bg-header-desktop.svg) center center/100% 100% #7b8e8e; } }
+        margin-right: 0.5em; } }
   .outer footer .attribution {
     font-size: 8px;
     text-align: center; }

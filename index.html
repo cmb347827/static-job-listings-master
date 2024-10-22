@@ -16,23 +16,28 @@
 <body>
     
     <div class="outer d-flex flex-column ">
+        <div id="banner"></div>
         <header title="Returned job listings" class='border'>
               <h1 class="visually-hidden">Applied filters</h1>
               <div id='filters' class="d-flex flex-wrap"></div>
         </header>
         
         <main>
-            <article title='all job listings or filtered results' id="js-job-listings">
-                <output id="no-results">
-                  <!-- no results content -->
-                   <h2>No Search results</h2>
-                   <p>No Job listings based on your search filters </p>
-                </output>
-            </article>
-            <output id="js-results">
-                <h2 class="visually-hidden">Results:</h2>
-                <!-- search result content -->
-            </output>
+            
+              <output title='all job listings' id="js-job-listings">
+                  
+                  <output id="no-results">
+                    <!-- no results content -->
+                    <h2>No Search results</h2>
+                    <p>No Job listings based on your search filters </p>
+                  </output>
+              </output>
+            
+              <output title='filtered results' id="js-results">
+                
+              </output>
+            
+            
         </main>
         <footer>
           <div class="attribution text-center mt-5">

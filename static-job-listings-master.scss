@@ -3,11 +3,14 @@
 
 
 $colors: (
-  Desaturated Dark Cyan: hsl(180, 29%, 50%),
+  Light Grayish Cyan : hsl(180, 52%, 96%),
+  Light Grayish Cyan2 : hsl(180, 31%, 95%),
+  Dark Grayish Cyan: hsl(180, 8%, 52%),
+  Very Dark Grayish Cyan: hsl(180, 14%, 20%),
 
 );
 $fallback-color: (
-  CadetBlue, 
+  PaleTurquoise,PaleTurquoise2, Crystal,PaleTurquoise4
 );
 
 @mixin font-color($color, $fallback-color) {
@@ -70,24 +73,41 @@ body{
   border:none;
 }
 .outer{
-      background-color: hsl(180, 52%, 96%);
-      section,header{
-          @include padding(2em 1em);
-          @include margin(1em 0);
+      output{
+         display:block;
+      }
+      @include bg-color(lighten(map-get($colors,Light Grayish Cyan),2),nth($fallback-color,1));
+      #banner{
+          height: 7em;
           @media screen and(min-width:768px){
-              @include padding(3em 2em);
+             background: url(./images/bg-header-desktop.svg) no-repeat hsl(180, 8%, 52%);
+          }
+      }
+      section,header{
+          @include padding(0.4em);
+          @include margin(1em 0);
+          
+          a{
+            @include font-color(map-get($colors,Dark Grayish Cyan),nth($fallback-color,3));
+            font-weight: $font_weight-bold;
+          }
+          @media screen and(min-width:768px){
+              @include padding(1em);
           }
           
       }
       section{
-          
+        @include bg-color(lighten(map-get($colors,Light Grayish Cyan),4),nth($fallback-color,1));
+          .lightgreenbg{
+            @include bg-color(map-get($colors,Light Grayish Cyan),nth($fallback-color,1));
+          }
           @media screen and(min-width:768px){
             margin-left: 2em;
             margin-right: 2em;
           }
       }
       header{
-        background: url(./images/bg-header-mobile.svg) center center/100% 100% hsl(180, 8%, 52%);
+        @include bg-color(lighten(map-get($colors,Light Grayish Cyan),4),nth($fallback-color,1));
         .clearButton{
           position:absolute;
           width: 100px;
@@ -96,7 +116,7 @@ body{
          @media screen and(min-width:768px){
            margin-left: 2em;
            margin-right: 0.5em;
-           background: url(./images/bg-header-desktop.svg) center center/100% 100% hsl(180, 8%, 52%);
+           
          }
       }
       footer {  
@@ -104,5 +124,8 @@ body{
           font-size: $font_size-8;
           text-align: center;
         }
+      }
+      @media screen and(min-width:768px){
+        
       }
 }
