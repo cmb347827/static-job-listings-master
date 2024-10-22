@@ -66,41 +66,39 @@ body{
   width:100%;
   height:100%;
 }
+.noborder{
+  border:none;
+}
 .outer{
-      
-      @include margin(5em 0);
-      header{
-          input[type='search']{
-              border:none;
-              /* &::-webkit-search-cancel-button,&::-moz-search-cancel-button,&::-ms-search-cancel-button,&::-o-search-cancel-button,&::-search-cancel-button{
-                 display:none;
-              }*/
-              &::-webkit-search-cancel-button{
-                -webkit-appearance: none;
-                height: 1em;
-                width: 1em;
-                background:green url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
-                background-size: cover;
-                color:white;
-              }
-          }
-          .clearButton{
-              position:absolute;
-              width: 100px;
-              right:1em;
-          }
-      }
+      background-color: hsl(180, 52%, 96%);
       section,header{
           @include padding(2em 1em);
           @include margin(1em 0);
           @media screen and(min-width:768px){
               @include padding(3em 2em);
-              @include margin(2em 3em);
           }
           
       }
-   
-
+      section{
+          
+          @media screen and(min-width:768px){
+            margin-left: 2em;
+            margin-right: 2em;
+          }
+      }
+      header{
+        background: url(./images/bg-header-mobile.svg) center center/100% 100% hsl(180, 8%, 52%);
+        .clearButton{
+          position:absolute;
+          width: 100px;
+          right:1em;
+        }
+         @media screen and(min-width:768px){
+           margin-left: 2em;
+           margin-right: 0.5em;
+           background: url(./images/bg-header-desktop.svg) center center/100% 100% hsl(180, 8%, 52%);
+         }
+      }
       footer {  
         .attribution {
           font-size: $font_size-8;

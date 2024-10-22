@@ -27,31 +27,32 @@ body {
   width: 100%;
   height: 100%; }
 
+.noborder {
+  border: none; }
+
 .outer {
-  margin: 5em 0; }
-  .outer header input[type='search'] {
-    border: none;
-    /* &::-webkit-search-cancel-button,&::-moz-search-cancel-button,&::-ms-search-cancel-button,&::-o-search-cancel-button,&::-search-cancel-button{
-       display:none;
-    }*/ }
-    .outer header input[type='search']::-webkit-search-cancel-button {
-      -webkit-appearance: none;
-      height: 1em;
-      width: 1em;
-      background: green url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
-      background-size: cover;
-      color: white; }
-  .outer header .clearButton {
-    position: absolute;
-    width: 100px;
-    right: 1em; }
+  background-color: #effafa; }
   .outer section, .outer header {
     padding: 2em 1em;
     margin: 1em 0; }
     @media screen and (min-width: 768px) {
       .outer section, .outer header {
-        padding: 3em 2em;
-        margin: 2em 3em; } }
+        padding: 3em 2em; } }
+  @media screen and (min-width: 768px) {
+    .outer section {
+      margin-left: 2em;
+      margin-right: 2em; } }
+  .outer header {
+    background: url(./images/bg-header-mobile.svg) center center/100% 100% #7b8e8e; }
+    .outer header .clearButton {
+      position: absolute;
+      width: 100px;
+      right: 1em; }
+    @media screen and (min-width: 768px) {
+      .outer header {
+        margin-left: 2em;
+        margin-right: 0.5em;
+        background: url(./images/bg-header-desktop.svg) center center/100% 100% #7b8e8e; } }
   .outer footer .attribution {
     font-size: 8px;
     text-align: center; }

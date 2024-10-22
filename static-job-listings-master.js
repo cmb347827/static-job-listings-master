@@ -7,7 +7,7 @@ const elements = {
 	listingsContainer : document.querySelector('#js-job-listings'),
 	filters:document.querySelector('#filters'),
 	data:{},
-	resultsContainer: document.querySelector('#results'),
+	resultsContainer: document.querySelector('#js-results'),
 }
 let vars={
 	filterId: 0,
@@ -60,12 +60,14 @@ const filterData =()=>{
 	console.log('filterdata',vars.filterData);
 };
 const addListings=(which)=>{
+	  
 	  //add job listings from json data
-	  console.log('vars filterdata',vars.filterData);
+	  //console.log('vars filterdata',vars.filterData);
 	  const data= (which==='non-filtered') ? elements.data : vars.filterData;
-	  const container = (filterData.length>0) ? elements.resultsContainer : elements.listingsContainer;
-	  //clear listingsContainer.innerHTML for new reload
+	  const container = (vars.filterData.length>0) ? elements.resultsContainer : elements.listingsContainer;
+	  //clear results/listingsContainer.innerHTML for new reload
 	  elements.listingsContainer.innerHTML='';
+	  elements.resultsContainer.innerHTML='';
 	  //clear filterData for next time the user adds a searchterm, and a new addListings() will be called with new filterdata including the new searchterm results
 	  vars.filterData=[];  
 	  
@@ -92,11 +94,11 @@ const addListings=(which)=>{
 								</div>
 						</div>
 				</div>
-				<ul class='ms-md-5 d-flex align-self-md-center nav nav-tabs'>
+				<ul class='noborder ms-md-5 d-flex align-self-md-center nav nav-tabs'>
 					<li class="nav-item"><a class="nav-link search-item">${item.role}</a></li>
 					<li class="nav-item"><a class="nav-link search-item">${item.level}</a></li>
 					<li class='nav-item d-flex'>${item.languages.map(elmt => `
-						<a class='nav-link search-item'>${elmt}</a>
+						<a class='nav-link search-item '>${elmt}</a>
 					`).join('')}</li>
 					<li class='nav-item d-flex'>${item.tools.map(elmt => `
 						<a class='nav-link search-item'>${elmt}</a>
@@ -133,7 +135,7 @@ function addFilter(linktext) {
     
 	//add data attribute id value to the last added search term delete button.
 	const removeBtn = document.querySelector(`[data-remove-button-id="${vars.filterId}"]`);
-	//addeventListener to the last added search term delete button
+	//addeventListener to the last added search term delete button, and only listens once 
 	removeBtn.addEventListener('click',removeSearch(linktext), { once: true });
 
 }
@@ -171,7 +173,7 @@ function addListener(){
 			}else{
 			   addListings('non-filtered');
 			}
-		});
+		},{once:true}); //once as doubles are not added and search return returns new elements(.search-item)
 	});
 	
 }
