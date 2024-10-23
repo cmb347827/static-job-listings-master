@@ -71,6 +71,8 @@ body {
   .outer header {
     background-color: PaleTurquoise;
     background-color: white; }
+    .outer header .customtab {
+      border: 4px solid red; }
     .outer header .clearButton {
       position: absolute;
       width: 100px;

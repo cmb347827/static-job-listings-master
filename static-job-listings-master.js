@@ -14,6 +14,7 @@ let vars={
 	allSearchTerms:[],
 	filterData:[],
 	clearBtnAdded: false,
+	filterTabs:[]
 }
 
 
@@ -113,7 +114,6 @@ const addListings=(which)=>{
 };
 
 const clearFilters=()=>{
-	console.log('clear filters');
 	//remove filters
 	elements.filters.innerHTML='';
 	addListings('non-filtered');
@@ -122,17 +122,21 @@ const clearFilters=()=>{
 function addFilter(linktext) {
 	//add search terms (to filter results) at top output
 	vars.filterId=++vars.filterId;
-	const output = `<form class="outer-search me-1 me-md-3 border">
+	const output = `<form class="customtab me-1 me-md-3 ">
 			            <input type='hidden' id='search-term${vars.filterId}' name='search-term${vars.filterId}'>
 					    <output name='result' for='search-term${vars.filterId}'>${linktext}<button data-remove-button-id="${vars.filterId}" type='button' class='btn close'><i class="fa-solid fa-square-xmark"></i></button>
 						</output>
 					</form>`;
+	//vars.filterTabs.push(output);
+	//add the new filter tab 
 	elements.filters.insertAdjacentHTML("afterbegin", output );
+	//create a clear button element
 	const clearBtn=`<button type="button" class="btn clearButton border">Clear</button>`;
 	if(vars.clearBtnAdded===false){
+		//if the clear button has not yet been added, add it to the end of the filter tabs.
 		elements.filters.insertAdjacentHTML('beforeend',clearBtn);
 		vars.clearBtnAdded=true;
-		document.querySelector('.clearButton').addEventListener('click',clearFilters);
+		document.querySelector('.clearButton').addEventListener('click',clearFilters,{once:true});
 	}
     
 	//add data attribute id value to the last added search term delete button.
@@ -141,10 +145,18 @@ function addFilter(linktext) {
 	removeBtn.addEventListener('click',removeSearch(linktext), { once: true });
 
 }
+
 const removeSearch =(linktext)=>{
 	return function curried_func(e) {
-		//delete search term at page top output 
-		e.currentTarget.parentElement.remove();
+		//delete filter tab at page top output 
+		//const tabId= e.currentTarget.getAttribute('data-remove-button-id')-1;
+		
+		if($(e.currentTarget.parentElement).hasClass('customtab')){
+			console.log('in 222222');
+			$(e.currentTarget.parentElement).removeClass('customtab');
+			console.log('style border',$(e.currentTarget.parentElement).style.border);
+		}
+		e.currentTarget.parentElement.parentElement.remove();
         //console.log(linktext,e.currentTarget.parentElement.firstChild);
 		//find index of search term in allSearchTerms in order to delete it from array , so its possible to reselect the same term again.
 		let indexSearchTerm= vars.allSearchTerms.indexOf(linktext);
@@ -155,6 +167,12 @@ const removeSearch =(linktext)=>{
 			addListings('filtered');
 		 }else{
 			addListings('non-filtered');
+			//remove clear button, I use false/true instead of toggling the boolean variable for clarity and reduces bugs.
+			vars.clearBtnAdded=false;
+		    const clearBtn=document.querySelector('.clearButton');
+			if(clearBtn){
+				clearBtn.remove();
+			}
 		 }
     }
 }
@@ -168,12 +186,18 @@ function addListener(){
 				//is oke, pass the link text to addFilter
 				addFilter($(this).text());
 			}
-            console.log('in addlisten',vars.allSearchTerms);
 			filterData();
 			if(vars.allSearchTerms.length>=1){
 			   addListings('filtered');
 			}else{
+			   //default non-filtered added for else as a safe fail.
 			   addListings('non-filtered');
+			   //remove clear button, I use false/true instead of toggling the boolean variable for clarity and reduces bugs.
+				vars.clearBtnAdded=false;
+				const clearBtn=document.querySelector('.clearButton');
+				if(clearBtn){
+					clearBtn.remove();
+				}
 			}
 		},{once:true}); //once as doubles are not added and search return returns new elements(.search-item)
 	});
