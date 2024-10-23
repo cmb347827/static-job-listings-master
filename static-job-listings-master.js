@@ -71,9 +71,9 @@ const addListings=(which)=>{
 	  //clear filterData for next time the user adds a searchterm, and a new addListings() will be called with new filterdata including the new searchterm results
 	  vars.filterData=[];  
 	  let addFeaturedBorder;
-	  
+
       data.forEach((item,index)=>{
-        addFeaturedBorder = item.featured ? addFeaturedBorder :'';
+        addFeaturedBorder = item.featured ? 'addFeaturedBorder' :'';
 		container.innerHTML += `
 		    <section class=' ${addFeaturedBorder} d-flex flex-md-row flex-column justify-content-md-between align-items-md-center me-2 '>
 				<div class='d-flex flex-md-row align-items-md-center flex-column'>
