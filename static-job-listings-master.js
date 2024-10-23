@@ -70,26 +70,28 @@ const addListings=(which)=>{
 	  elements.resultsContainer.innerHTML='';
 	  //clear filterData for next time the user adds a searchterm, and a new addListings() will be called with new filterdata including the new searchterm results
 	  vars.filterData=[];  
+	  let addFeaturedBorder;
 	  
       data.forEach((item,index)=>{
+        addFeaturedBorder = item.featured ? addFeaturedBorder :'';
 		container.innerHTML += `
-		    <section class='border d-flex flex-md-row flex-column justify-content-md-between align-items-md-center me-2'>
+		    <section class=' ${addFeaturedBorder} d-flex flex-md-row flex-column justify-content-md-between align-items-md-center me-2 '>
 				<div class='d-flex flex-md-row align-items-md-center flex-column'>
 				        <div class='svg-outer'>
 						   <img src='${item.logo}' alt='' class='svg-100 me-4'>
 						</div>
 						<div class='d-flex flex-column'>
 								<div class='d-flex'>
-									<div>${item.company} </div>
-									<div class='tabFont__hover'>${item.new ? 'NEW!' : ''} </div>
-									<div>${item.featured ? 'FEATURED' :''}</div>
+									<div class='me2'>${item.company} </div>
+									<div class='tabFont__hover me-2'>${item.new ? 'NEW!' : ''} </div>
+									<div class='featuredFont me-2'>${item.featured ? 'FEATURED' :''}</div>
 								</div>
 								<div>
 									${item.position}
 								</div>
 								<div class='d-flex'>
-									<div>${item.postedAt}</div>
-									<div>${item.contract}</div>
+									<div class='me-2'>${item.postedAt}</div>
+									<div class='me-2'>${item.contract}</div>
 									<div>${item.location}</div>
 								</div>
 						</div>
