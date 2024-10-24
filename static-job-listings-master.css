@@ -25,7 +25,8 @@ body {
 
 .svg-banner-outer {
   max-width: 100%;
-  max-height: 100%; }
+  max-height: 100%;
+  background-color: #7b8e8e; }
 
 .svg-100 {
   width: 100%;
@@ -52,11 +53,10 @@ body {
   .outer output {
     display: block; }
   .outer #banner {
-    height: 10em; }
+    height: fit-content; }
   .outer section, .outer header {
     padding: 0.4em;
-    margin: 1em 0;
-    min-height: 10em; }
+    margin: 1em 0; }
     .outer section .tabFont, .outer header .tabFont {
       color: Crystal;
       color: #7b8e8e;
@@ -73,6 +73,7 @@ body {
       .outer section, .outer header {
         padding: 1em; } }
   .outer section {
+    min-height: 10em;
     background-color: PaleTurquoise;
     background-color: white; }
     .outer section .lightgreenbg {
@@ -83,6 +84,8 @@ body {
         margin-left: 2em;
         margin-right: 2em; } }
   .outer header {
+    padding: 0;
+    margin: 0;
     background-color: PaleTurquoise;
     background-color: white; }
     .outer header .customtab {
