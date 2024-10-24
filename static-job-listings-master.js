@@ -78,7 +78,7 @@ const addListings=(which)=>{
 		container.innerHTML += `
 		    <section class=' ${addFeaturedBorder} d-flex flex-md-row flex-column justify-content-md-between align-items-md-center me-2 '>
 				<div class='d-flex flex-md-row align-items-md-center flex-column'>
-				        <div class='svg-outer'>
+				        <div class='svg-logo-outer'>
 						   <img src='${item.logo}' alt='' class='svg-100 me-4'>
 						</div>
 						<div class='d-flex flex-column'>
