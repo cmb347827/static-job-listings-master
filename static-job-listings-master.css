@@ -54,6 +54,15 @@ body {
     display: block; }
   .outer #banner {
     height: fit-content; }
+  .outer .visuallyhidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden; }
   .outer section, .outer header {
     padding: 0.4em;
     margin: 1em 0; }

@@ -117,10 +117,13 @@ const clearFilters=()=>{
 	//remove filters
 	elements.filters.innerHTML='';
 	addListings('non-filtered');
-
+    
 }
 function addFilter(linktext) {
 	//add search terms (to filter results) at top output
+	if($('#filters').hasClass('visuallyhidden')){
+		$('#filters').removeClass('visuallyhidden');
+	}
 	vars.filterId=++vars.filterId;
 	const output = `<form class="customtab me-1 me-md-3 ">
 			            <input type='hidden' id='search-term${vars.filterId}' name='search-term${vars.filterId}'>
@@ -142,22 +145,15 @@ function addFilter(linktext) {
 	//add data attribute id value to the last added search term delete button.
 	const removeBtn = document.querySelector(`[data-remove-button-id="${vars.filterId}"]`);
 	//addeventListener to the last added search term delete button, and only listens once 
-	removeBtn.addEventListener('click',removeSearch(linktext), { once: true });
+	removeBtn.addEventListener('click',removeFilter(linktext), { once: true });
 
 }
 
-const removeSearch =(linktext)=>{
+const removeFilter =(linktext)=>{
 	return function curried_func(e) {
 		//delete filter tab at page top output 
-		//const tabId= e.currentTarget.getAttribute('data-remove-button-id')-1;
 		
-		if($(e.currentTarget.parentElement).hasClass('customtab')){
-			console.log('in 222222');
-			$(e.currentTarget.parentElement).removeClass('customtab');
-			console.log('style border',$(e.currentTarget.parentElement).style.border);
-		}
 		e.currentTarget.parentElement.parentElement.remove();
-        //console.log(linktext,e.currentTarget.parentElement.firstChild);
 		//find index of search term in allSearchTerms in order to delete it from array , so its possible to reselect the same term again.
 		let indexSearchTerm= vars.allSearchTerms.indexOf(linktext);
 	    vars.allSearchTerms.splice(indexSearchTerm,1);
@@ -166,6 +162,7 @@ const removeSearch =(linktext)=>{
 		if(vars.allSearchTerms.length>=1){
 			addListings('filtered');
 		 }else{
+			$('#filters').addClass('visuallyhidden');
 			addListings('non-filtered');
 			//remove clear button, I use false/true instead of toggling the boolean variable for clarity and reduces bugs.
 			vars.clearBtnAdded=false;
@@ -173,6 +170,7 @@ const removeSearch =(linktext)=>{
 			if(clearBtn){
 				clearBtn.remove();
 			}
+
 		 }
     }
 }
