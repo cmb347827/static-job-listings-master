@@ -121,7 +121,7 @@ const clearFilters=()=>{
 }
 function addFilter(linktext) {
 	//add search terms (to filter results) at top output
-	if($('#filters').hasClass('visuallyhidden')){
+	if($('#filters').hasClass('visuallyhidden')){ //show filter terms output element
 		$('#filters').removeClass('visuallyhidden');
 	}
 	vars.filterId=++vars.filterId;
@@ -134,7 +134,7 @@ function addFilter(linktext) {
 	//add the new filter tab 
 	elements.filters.insertAdjacentHTML("afterbegin", output );
 	//create a clear button element
-	const clearBtn=`<button type="button" class="btn clearButton border">Clear</button>`;
+	const clearBtn=`<button type="button" class="btn clearButton">Clear</button>`;
 	if(vars.clearBtnAdded===false){
 		//if the clear button has not yet been added, add it to the end of the filter tabs.
 		elements.filters.insertAdjacentHTML('beforeend',clearBtn);
@@ -162,7 +162,9 @@ const removeFilter =(linktext)=>{
 		if(vars.allSearchTerms.length>=1){
 			addListings('filtered');
 		 }else{
-			$('#filters').addClass('visuallyhidden');
+			if($('#filters').hasClass('visuallyhidden')===false){
+                $('#filters').addClass('visuallyhidden');
+			}
 			addListings('non-filtered');
 			//remove clear button, I use false/true instead of toggling the boolean variable for clarity and reduces bugs.
 			vars.clearBtnAdded=false;

@@ -93,16 +93,26 @@ body {
         margin-left: 2em;
         margin-right: 2em; } }
   .outer header {
-    padding: 0;
     margin: 0;
+    padding: 0;
     background-color: PaleTurquoise;
     background-color: white; }
-    .outer header .customtab {
-      border: 4px solid #2c3a3a; }
+    .outer header #filters {
+      min-height: 10em; }
     .outer header .clearButton {
       position: absolute;
-      width: 100px;
-      right: 1em; }
+      right: 1em;
+      font-weight: 700;
+      color: Crystal;
+      color: #7b8e8e; }
+      .outer header .clearButton:hover {
+        text-decoration: underline; }
+    .outer header .customtab {
+      background-color: PaleTurquoise2;
+      background-color: #eef6f6;
+      color: Crystal;
+      color: #7b8e8e;
+      height: 2em; }
     @media screen and (min-width: 768px) {
       .outer header {
         margin-left: 2em;

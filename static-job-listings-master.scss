@@ -101,13 +101,11 @@ body{
       }
       .visuallyhidden {
         position: absolute;
-      
         width: 1px;
         height: 1px;
         margin: -1px;
         border: 0;
         padding: 0;
-      
         clip: rect(0 0 0 0);
         overflow: hidden;
       }
@@ -144,16 +142,26 @@ body{
           }
       }
       header{
-         padding:0;
          margin:0;
-        .customtab{
-           border: 4px solid hsl(180, 14%, 20%);
-        }
+         padding:0;
+
         @include bg-color(lighten(map-get($colors,Light Grayish Cyan),4),nth($fallback-color,1));
+        #filters{
+           min-height: 10em;
+        }
         .clearButton{
           position:absolute;
-          width: 100px;
           right:1em;
+          font-weight:$font_weight-bold;
+          @include font-color(map-get($colors,Dark Grayish Cyan),nth($fallback-color,3));
+          &:hover{
+            text-decoration:underline;
+          }
+        }
+        .customtab{
+            @include bg-color(map-get($colors,Light Grayish Cyan2),nth($fallback-color,2));
+            @include font-color(map-get($colors,Dark Grayish Cyan),nth($fallback-color,3));
+            height: 2em;
         }
          @media screen and(min-width:768px){
            margin-left: 2em;
