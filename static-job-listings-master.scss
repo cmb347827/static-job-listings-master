@@ -121,11 +121,9 @@ body{
           .tabFont{
             @include font-color(map-get($colors,Dark Grayish Cyan),nth($fallback-color,3));
             font-weight: $font_weight-bold;
-            &:hover,&__hover{
+            &:hover{
               @include bg-color(map-get($colors, Desaturated Dark Cyan),nth($fallback-color,5));
               color: white;
-              border-radius:18px;
-              padding: 0.3em;
             }
           }
           .featuredFont{
@@ -166,6 +164,9 @@ body{
         .fa-square-xmark{
             font-size:2.1em;
             @extend .greenfont;
+            &:hover{
+              @include font-color(map-get($colors,Very Dark Grayish Cyan),nth($fallback-color,4));
+            }
         }
         .clearButton{
           position:absolute;

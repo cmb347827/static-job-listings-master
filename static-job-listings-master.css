@@ -76,12 +76,10 @@ body {
       color: Crystal;
       color: #7b8e8e;
       font-weight: 700; }
-      .outer section .tabFont:hover, .outer section .tabFont__hover, .outer header .tabFont:hover, .outer header .tabFont__hover {
+      .outer section .tabFont:hover, .outer header .tabFont:hover {
         background-color: DarkCyan;
         background-color: #5ba4a4;
-        color: white;
-        border-radius: 18px;
-        padding: 0.3em; }
+        color: white; }
     .outer section .featuredFont, .outer header .featuredFont {
       background-color: PaleTurquoise4;
       background-color: #2c3a3a;
@@ -113,6 +111,9 @@ body {
       padding: 0.2em; }
     .outer header .fa-square-xmark {
       font-size: 2.1em; }
+      .outer header .fa-square-xmark:hover {
+        color: PaleTurquoise4;
+        color: #2c3a3a; }
     .outer header .clearButton {
       position: absolute;
       right: 1em;

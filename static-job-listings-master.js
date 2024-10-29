@@ -14,7 +14,6 @@ let vars={
 	allSearchTerms:[],
 	filterData:[],
 	clearBtnAdded: false,
-	filterTabs:[]
 }
 
 
@@ -119,11 +118,25 @@ const addListings=(which)=>{
 
 const clearFilters=()=>{
 	//remove filters
-	elements.filters.innerHTML='';
+	if($('#filters').hasClass('visuallyhidden')===false){
+		$('#filters').addClass('visuallyhidden');
+	}
 	addListings('non-filtered');
-    
+	//remove clear button, I use false/true instead of toggling the boolean variable for clarity and reduces bugs.
+	vars.clearBtnAdded=false;
+	const clearBtn=document.querySelector('.clearButton');
+	if(clearBtn){
+		clearBtn.remove();
+	}
+    //clear filterData for next time the user adds a searchterm, and a new addListings() will be called with new filterdata including the new searchterm results
+	vars.filterData=[]; 
+	vars.allSearchTerms=[];
+	vars.filterId= 0;
+	elements.filters.innerHTML='';
+	
 }
 function addFilter(linktext) {
+	console.log('in addfilter clearbtnadded',vars.clearBtnAdded);
 	//add search terms (to filter results) at top output
 	if($('#filters').hasClass('visuallyhidden')){ //show filter terms output element
 		$('#filters').removeClass('visuallyhidden');
@@ -166,17 +179,7 @@ const removeFilter =(linktext)=>{
 		if(vars.allSearchTerms.length>=1){
 			addListings('filtered');
 		 }else{
-			if($('#filters').hasClass('visuallyhidden')===false){
-                $('#filters').addClass('visuallyhidden');
-			}
-			addListings('non-filtered');
-			//remove clear button, I use false/true instead of toggling the boolean variable for clarity and reduces bugs.
-			vars.clearBtnAdded=false;
-		    const clearBtn=document.querySelector('.clearButton');
-			if(clearBtn){
-				clearBtn.remove();
-			}
-
+		    clearFilters();
 		 }
     }
 }
@@ -195,13 +198,8 @@ function addListener(){
 			   addListings('filtered');
 			}else{
 			   //default non-filtered added for else as a safe fail.
-			   addListings('non-filtered');
 			   //remove clear button, I use false/true instead of toggling the boolean variable for clarity and reduces bugs.
-				vars.clearBtnAdded=false;
-				const clearBtn=document.querySelector('.clearButton');
-				if(clearBtn){
-					clearBtn.remove();
-				}
+				clearFilters();
 			}
 		},{once:true}); //once as doubles are not added and search return returns new elements(.search-item)
 	});
