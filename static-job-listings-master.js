@@ -71,10 +71,14 @@ const addListings=(which)=>{
 	  elements.resultsContainer.innerHTML='';
 	  //clear filterData for next time the user adds a searchterm, and a new addListings() will be called with new filterdata including the new searchterm results
 	  vars.filterData=[];  
-	  let addFeaturedBorder;
+	  let addFeaturedBorder; let tabFont__hover; let featuredFont;
 
       data.forEach((item,index)=>{
+		//some items may not include, featured or new, so add classes based on if they are included or not only.
         addFeaturedBorder = item.featured ? 'addFeaturedBorder' :'';
+        tabFont__hover = item.new ? 'tabFont__hover' : '';
+		featuredFont= item.featured ? 'featuredFont' : '';
+
 		container.innerHTML += `
 		    <section class=' ${addFeaturedBorder} d-flex flex-md-row flex-column justify-content-md-between align-items-md-center me-2 '>
 				<div class='d-flex flex-md-row align-items-md-center flex-column'>
@@ -84,8 +88,8 @@ const addListings=(which)=>{
 						<div class='d-flex flex-column'>
 								<div class='d-flex'>
 									<div class='me2'>${item.company} </div>
-									<div class='tabFont__hover me-2'>${item.new ? 'NEW!' : ''} </div>
-									<div class='featuredFont me-2'>${item.featured ? 'FEATURED' :''}</div>
+									<div class='${tabFont__hover} me-2'>${item.new ? 'NEW!' : ''} </div>
+									<div class='${featuredFont} me-2'>${item.featured ? 'FEATURED' :''}</div>
 								</div>
 								<div>
 									${item.position}
@@ -98,13 +102,13 @@ const addListings=(which)=>{
 						</div>
 				</div>
 				<ul class='noborder ms-md-5 d-flex align-self-md-center nav nav-tabs'>
-					<li class="nav-item"><a class="nav-link search-item lightgreenbg tabFont me-2">${item.role}</a></li>
-					<li class="nav-item"><a class="nav-link search-item lightgreenbg tabFont me-2">${item.level}</a></li>
+					<li class="nav-item"><a class="nav-link search-item lightgreenbg tabFont mb-2 me-2">${item.role}</a></li>
+					<li class="nav-item"><a class="nav-link search-item lightgreenbg tabFont mb-2 me-2">${item.level}</a></li>
 					<li class='nav-item d-flex'>${item.languages.map(elmt => `
-						<a class='nav-link search-item lightgreenbg tabFont me-2'>${elmt}</a>
+						<a class='nav-link search-item lightgreenbg tabFont mb-2 me-2'>${elmt}</a>
 					`).join('')}</li>
 					<li class='nav-item d-flex'>${item.tools.map(elmt => `
-						<a class='nav-link search-item lightgreenbg tabFont me-2'>${elmt}</a>
+						<a class='nav-link search-item lightgreenbg tabFont mb-2 me-2'>${elmt}</a>
 					`).join('')}</li>
 				</ul>
 		    </section>
