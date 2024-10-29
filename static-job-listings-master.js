@@ -87,11 +87,11 @@ const addListings=(which)=>{
 						</div>
 						<div class='d-flex flex-column'>
 								<div class='d-flex'>
-									<div class='me2'>${item.company} </div>
+									<div class='greenfont me2'>${item.company} </div>
 									<div class='${tabFont__hover} me-2'>${item.new ? 'NEW!' : ''} </div>
 									<div class='${featuredFont} me-2'>${item.featured ? 'FEATURED' :''}</div>
 								</div>
-								<div>
+								<div class='greenfont__hover'>
 									${item.position}
 								</div>
 								<div class='d-flex'>

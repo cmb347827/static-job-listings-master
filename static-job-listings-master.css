@@ -63,6 +63,12 @@ body {
     padding: 0;
     clip: rect(0 0 0 0);
     overflow: hidden; }
+  .outer .greenfont, .outer header .fa-square-xmark {
+    color: DarkCyan;
+    color: #5ba4a4; }
+    .outer .greenfont__hover:hover {
+      color: DarkCyan;
+      color: #5ba4a4; }
   .outer section, .outer header {
     padding: 0.4em;
     margin: 1em 0; }
@@ -75,12 +81,12 @@ body {
         background-color: #5ba4a4;
         color: white;
         border-radius: 18px;
-        padding: 0.1em; }
+        padding: 0.3em; }
     .outer section .featuredFont, .outer header .featuredFont {
       background-color: PaleTurquoise4;
       background-color: #2c3a3a;
       color: white;
-      padding: 0.1em;
+      padding: 0.3em;
       border-radius: 18px; }
     @media screen and (min-width: 768px) {
       .outer section, .outer header {
@@ -106,9 +112,7 @@ body {
     .outer header button {
       padding: 0.2em; }
     .outer header .fa-square-xmark {
-      font-size: 2.1em;
-      color: DarkCyan;
-      color: #5ba4a4; }
+      font-size: 2.1em; }
     .outer header .clearButton {
       position: absolute;
       right: 1em;
