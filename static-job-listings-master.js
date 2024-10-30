@@ -70,12 +70,12 @@ const addListings=(which)=>{
 	  elements.resultsContainer.innerHTML='';
 	  //clear filterData for next time the user adds a searchterm, and a new addListings() will be called with new filterdata including the new searchterm results
 	  vars.filterData=[];  
-	  let addFeaturedBorder; let tabFont__hover; let featuredFont;
+	  let addFeaturedBorder; let newFont; let featuredFont;
 
       data.forEach((item,index)=>{
 		//some items may not include, featured or new, so add classes based on if they are included or not only.
         addFeaturedBorder = item.featured ? 'addFeaturedBorder' :'';
-        tabFont__hover = item.new ? 'tabFont__hover' : '';
+        newFont = item.new ? 'newFont' : '';
 		featuredFont= item.featured ? 'featuredFont' : '';
 
 		container.innerHTML += `
@@ -86,28 +86,28 @@ const addListings=(which)=>{
 						</div>
 						<div class='d-flex flex-column'>
 								<div class='d-flex'>
-									<div class='greenfont me2'>${item.company} </div>
-									<div class='${tabFont__hover} me-2'>${item.new ? 'NEW!' : ''} </div>
-									<div class='${featuredFont} me-2'>${item.featured ? 'FEATURED' :''}</div>
+									<div class='greenfont me-2 fw-semibold'>${item.company} </div>
+									<div class='${newFont} text-white rounded-pill p-2 me-2'>${item.new ? 'NEW!' : ''} </div>
+									<div class='${featuredFont} text-white rounded-pill p-2 me-2'>${item.featured ? 'FEATURED' :''}</div>
 								</div>
-								<div class='greenfont__hover'>
+								<div class='greenfont__hover fw-semibold'>
 									${item.position}
 								</div>
 								<div class='d-flex'>
-									<div class='me-2'>${item.postedAt}</div>
-									<div class='me-2'>${item.contract}</div>
-									<div>${item.location}</div>
+									<div class='fw-medium me-2'>${item.postedAt}</div>
+									<div class='fw-medium me-2'>${item.contract}</div>
+									<div class='fw-medium'>${item.location}</div>
 								</div>
 						</div>
 				</div>
 				<ul class='noborder ms-md-5 d-flex align-self-md-center nav nav-tabs'>
-					<li class="nav-item"><a class="nav-link search-item lightgreenbg tabFont mb-2 me-2">${item.role}</a></li>
-					<li class="nav-item"><a class="nav-link search-item lightgreenbg tabFont mb-2 me-2">${item.level}</a></li>
+					<li class="nav-item"><a class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.role}</a></li>
+					<li class="nav-item"><a class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.level}</a></li>
 					<li class='nav-item d-flex'>${item.languages.map(elmt => `
-						<a class='nav-link search-item lightgreenbg tabFont mb-2 me-2'>${elmt}</a>
+						<a class='nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2'>${elmt}</a>
 					`).join('')}</li>
 					<li class='nav-item d-flex'>${item.tools.map(elmt => `
-						<a class='nav-link search-item lightgreenbg tabFont mb-2 me-2'>${elmt}</a>
+						<a class='nav-link search-item lightgreenbg tabBgHover fw-bold greenfont mb-2 me-2'>${elmt}</a>
 					`).join('')}</li>
 				</ul>
 		    </section>
@@ -118,8 +118,11 @@ const addListings=(which)=>{
 
 const clearFilters=()=>{
 	//remove filters
-	if($('#filters').hasClass('visuallyhidden')===false){
-		$('#filters').addClass('visuallyhidden');
+	if($('#header').hasClass('visuallyhidden')===false){
+		$('#header').addClass('visuallyhidden');
+	}
+	if($('#header').hasClass('filtersPosition')){
+		$('#header').removeClass('filtersPosition');
 	}
 	addListings('non-filtered');
 	//remove clear button, I use false/true instead of toggling the boolean variable for clarity and reduces bugs.
@@ -138,11 +141,14 @@ const clearFilters=()=>{
 function addFilter(linktext) {
 	console.log('in addfilter clearbtnadded',vars.clearBtnAdded);
 	//add search terms (to filter results) at top output
-	if($('#filters').hasClass('visuallyhidden')){ //show filter terms output element
-		$('#filters').removeClass('visuallyhidden');
+	if($('#header').hasClass('visuallyhidden')){ //show filter terms output element
+		$('#header').removeClass('visuallyhidden');
+	}
+	if($('#header').hasClass('filtersPosition')===false){
+		$('#header').addClass('filtersPosition');
 	}
 	vars.filterId=++vars.filterId;
-	const output = `<form class="customtab me-1 me-md-3 ">
+	const output = `<form class="customtab greenfont lightgreenbg fw-bold ms-2 me-1 me-md-3 ">
 			            <input type='hidden' id='search-term${vars.filterId}' name='search-term${vars.filterId}'>
 					    <output name='result' for='search-term${vars.filterId}'>${linktext}<button data-remove-button-id="${vars.filterId}" type='button' class='btn close'><i class="fa-solid fa-square-xmark"></i></button>
 						</output>
@@ -151,7 +157,7 @@ function addFilter(linktext) {
 	//add the new filter tab 
 	elements.filters.insertAdjacentHTML("afterbegin", output );
 	//create a clear button element
-	const clearBtn=`<button type="button" class="btn clearButton">Clear</button>`;
+	const clearBtn=`<button type="button" class="btn clearButton greenfont fw-bold me-2">Clear</button>`;
 	if(vars.clearBtnAdded===false){
 		//if the clear button has not yet been added, add it to the end of the filter tabs.
 		elements.filters.insertAdjacentHTML('beforeend',clearBtn);
@@ -210,6 +216,5 @@ function addListener(){
 $(window).on('load',function(){
 
     fetchAsync();
-    
 
 });
