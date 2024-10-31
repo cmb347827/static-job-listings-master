@@ -90,17 +90,17 @@ const addListings=(which)=>{
 									<div class='${newFont} text-white rounded-pill p-2 me-2'>${item.new ? 'NEW!' : ''} </div>
 									<div class='${featuredFont} text-white rounded-pill p-2 me-2'>${item.featured ? 'FEATURED' :''}</div>
 								</div>
-								<div class='greenfont__hover fw-semibold'>
+								<div class='greenfont__hover fw-bold mt-2'>
 									${item.position}
 								</div>
-								<div class='d-flex'>
+								<div class='d-flex greyfont pb-3 pb-md-2 mt-4 mt-md-2 borderbottom'>
 									<div class='fw-medium me-2'>${item.postedAt}</div>
 									<div class='fw-medium me-2'>${item.contract}</div>
 									<div class='fw-medium'>${item.location}</div>
 								</div>
 						</div>
 				</div>
-				<ul class='noborder ms-md-5 d-flex align-self-md-center nav nav-tabs'>
+				<ul class='noborder ms-md-5 d-flex align-self-md-center nav nav-tabs pt-2'>
 					<li class="nav-item"><a class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.role}</a></li>
 					<li class="nav-item"><a class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.level}</a></li>
 					<li class='nav-item d-flex'>${item.languages.map(elmt => `

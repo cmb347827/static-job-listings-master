@@ -7,7 +7,8 @@ html {
   box-sizing: inherit; }
 
 body {
-  font-size: 1.2rem;
+  font-family: "League Spartan", sans-serif;
+  font-size: 15px;
   font-weight: 400; }
 
 .top-z-index {
@@ -16,12 +17,15 @@ body {
   opacity: 1; }
 
 .svg-logo-outer {
+  position: relative;
+  top: -2em;
   max-width: 10%;
   max-height: 10%; }
   @media screen and (min-width: 768px) {
     .svg-logo-outer {
       max-width: 30%;
-      max-height: 30%; } }
+      max-height: 30%;
+      top: 0; } }
 
 .svg-banner-outer {
   max-width: 100%;
@@ -73,6 +77,14 @@ body {
     .outer .greenfont__hover:hover {
       color: DarkCyan;
       color: #5ba4a4; }
+  .outer .greyfont {
+    color: Crystal;
+    color: #7b8e8e; }
+  .outer .borderbottom {
+    border-bottom: 1px solid lightgray; }
+    @media screen and (min-width: 768px) {
+      .outer .borderbottom {
+        border: none; } }
   .outer .lightgreenbg {
     background-color: PaleTurquoise;
     background-color: #effafa; }
@@ -93,7 +105,9 @@ body {
       .outer section, .outer header {
         padding: 1em; } }
   .outer section {
+    padding: 1em;
     min-height: 10em;
+    box-shadow: 15px 5px 5px #eef6f6;
     background-color: PaleTurquoise;
     background-color: white; }
     @media screen and (min-width: 768px) {
