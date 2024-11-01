@@ -79,10 +79,10 @@ const addListings=(which)=>{
 		featuredFont= item.featured ? 'featuredFont' : '';
 
 		container.innerHTML += `
-		    <section class=' ${addFeaturedBorder} d-flex flex-md-row flex-column justify-content-md-between align-items-md-center me-2 '>
+		    <section aria-label='Job listing' class=' ${addFeaturedBorder} d-flex flex-md-row flex-column justify-content-md-between align-items-md-center me-2 '>
 				<div class='d-flex flex-md-row align-items-md-center flex-column'>
 				        <div class='svg-logo-outer'>
-						   <img src='${item.logo}' alt='' class='svg-100 me-4'>
+						   <img src='${item.logo}' alt='Company logo' class='svg-100 me-4'>
 						</div>
 						<div class='d-flex flex-column'>
 								<div class='d-flex'>
@@ -101,13 +101,13 @@ const addListings=(which)=>{
 						</div>
 				</div>
 				<ul class='noborder ms-md-5 d-flex align-self-md-center nav nav-tabs pt-2'>
-					<li class="nav-item"><a class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.role}</a></li>
-					<li class="nav-item"><a class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.level}</a></li>
+					<li class="nav-item"><a href='#' class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.role}</a></li>
+					<li class="nav-item"><a href='#' class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.level}</a></li>
 					<li class='nav-item d-flex'>${item.languages.map(elmt => `
-						<a class='nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2'>${elmt}</a>
+						<a href='#' class='nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2'>${elmt}</a>
 					`).join('')}</li>
 					<li class='nav-item d-flex'>${item.tools.map(elmt => `
-						<a class='nav-link search-item lightgreenbg tabBgHover fw-bold greenfont mb-2 me-2'>${elmt}</a>
+						<a href='#' class='nav-link search-item lightgreenbg tabBgHover fw-bold greenfont mb-2 me-2'>${elmt}</a>
 					`).join('')}</li>
 				</ul>
 		    </section>
