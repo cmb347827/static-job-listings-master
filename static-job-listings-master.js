@@ -100,13 +100,13 @@ const addListings=(which)=>{
 								</div>
 						</div>
 				</div>
-				<ul class='noborder ms-md-5 d-flex align-self-md-center nav nav-tabs pt-2'>
-					<li class="nav-item"><a href='#' class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.role}</a></li>
-					<li class="nav-item"><a href='#' class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.level}</a></li>
-					<li class='nav-item d-flex'>${item.languages.map(elmt => `
+				<ul  role="tablist" class='noborder ms-md-5 d-flex align-self-md-center nav nav-tabs pt-2'>
+					<li role="tab" class="nav-item"><a href='#' class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.role}</a></li>
+					<li role="tab" class="nav-item"><a href='#' class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.level}</a></li>
+					<li role="tab" class='nav-item d-flex'>${item.languages.map(elmt => `
 						<a href='#' class='nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2'>${elmt}</a>
 					`).join('')}</li>
-					<li class='nav-item d-flex'>${item.tools.map(elmt => `
+					<li role="tab" class='nav-item d-flex'>${item.tools.map(elmt => `
 						<a href='#' class='nav-link search-item lightgreenbg tabBgHover fw-bold greenfont mb-2 me-2'>${elmt}</a>
 					`).join('')}</li>
 				</ul>
@@ -120,6 +120,7 @@ const clearFilters=()=>{
 	//remove filters
 	if($('#header').hasClass('visuallyhidden')===false){
 		$('#header').addClass('visuallyhidden');
+        $('#header').attr('aria-hidden','true');
 	}
 	if($('#header').hasClass('filtersPosition')){
 		$('#header').removeClass('filtersPosition');
@@ -139,10 +140,10 @@ const clearFilters=()=>{
 	
 }
 function addFilter(linktext) {
-	console.log('in addfilter clearbtnadded',vars.clearBtnAdded);
 	//add search terms (to filter results) at top output
 	if($('#header').hasClass('visuallyhidden')){ //show filter terms output element
 		$('#header').removeClass('visuallyhidden');
+		$('#header').attr('aria-hidden','false');
 	}
 	if($('#header').hasClass('filtersPosition')===false){
 		$('#header').addClass('filtersPosition');
@@ -214,7 +215,7 @@ function addListener(){
 
 
 $(window).on('load',function(){
-
+	$('#header').attr('aria-hidden','true');
     fetchAsync();
 
 });
