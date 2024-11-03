@@ -79,7 +79,7 @@ const addListings=(which)=>{
 		featuredFont= item.featured ? 'featuredFont' : '';
 
 		container.innerHTML += `
-		    <section aria-label='Job listing' class=' ${addFeaturedBorder} d-flex flex-md-row flex-column justify-content-md-between align-items-md-center me-2 '>
+		    <section title='Job listing' class=' ${addFeaturedBorder} d-flex flex-md-row flex-column justify-content-md-between align-items-md-center me-2 '>
 				<div class='d-flex flex-md-row align-items-md-center flex-column'>
 				        <div class='svg-logo-outer'>
 						   <img src='${item.logo}' alt='Company logo' class='svg-100 me-4'>
@@ -100,13 +100,13 @@ const addListings=(which)=>{
 								</div>
 						</div>
 				</div>
-				<ul  role="tablist" class='noborder ms-md-5 d-flex align-self-md-center nav nav-tabs pt-2'>
-					<li role="tab" class="nav-item"><a href='#' class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.role}</a></li>
-					<li role="tab" class="nav-item"><a href='#' class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.level}</a></li>
-					<li role="tab" class='nav-item d-flex'>${item.languages.map(elmt => `
+				<ul  role="presentation" class='noborder ms-md-5 d-flex align-self-md-center nav nav-tabs pt-2'>
+					<li role="presentation" class="nav-item"><a href='#'  class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.role}</a></li>
+					<li role="presentation" class="nav-item"><a href='#' class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.level}</a></li>
+					<li role="presentation" class='nav-item d-flex'>${item.languages.map(elmt => `
 						<a href='#' class='nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2'>${elmt}</a>
 					`).join('')}</li>
-					<li role="tab" class='nav-item d-flex'>${item.tools.map(elmt => `
+					<li role="presentation" class='nav-item d-flex'>${item.tools.map(elmt => `
 						<a href='#' class='nav-link search-item lightgreenbg tabBgHover fw-bold greenfont mb-2 me-2'>${elmt}</a>
 					`).join('')}</li>
 				</ul>
@@ -215,7 +215,8 @@ function addListener(){
 
 
 $(window).on('load',function(){
+	fetchAsync();
 	$('#header').attr('aria-hidden','true');
-    fetchAsync();
+    
 
 });
