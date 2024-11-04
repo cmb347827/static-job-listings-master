@@ -160,6 +160,9 @@ body{
         padding: 1em;
         min-height: 10em;
         box-shadow: 15px 5px 5px hsl(180, 31%, 95%);
+        button{
+           border:none;
+        }
         @include bg-color(lighten(map-get($colors,Light Grayish Cyan),4),nth($fallback-color,1));
         
           @media screen and(min-width:768px){

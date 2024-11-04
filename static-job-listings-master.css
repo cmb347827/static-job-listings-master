@@ -110,6 +110,8 @@ body {
     box-shadow: 15px 5px 5px #eef6f6;
     background-color: PaleTurquoise;
     background-color: white; }
+    .outer section button {
+      border: none; }
     @media screen and (min-width: 768px) {
       .outer section {
         margin-left: 2em;
