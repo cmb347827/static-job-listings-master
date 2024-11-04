@@ -80,15 +80,17 @@ const addListings=(which)=>{
 
 		container.innerHTML += `
 		    <section title='Job listing' class=' ${addFeaturedBorder} d-flex flex-md-row flex-column justify-content-md-between align-items-md-center me-2 '>
-				<div class='d-flex flex-md-row align-items-md-center flex-column'>
+				
+			    <div class='d-flex flex-md-row align-items-md-center flex-column'>
+				        <h4 class='visually-hidden'>${item.company} </h4>
 				        <div class='svg-logo-outer'>
 						   <img src='${item.logo}' alt='Company logo' class='svg-100 me-4'>
 						</div>
 						<div class='d-flex flex-column'>
 								<div class='d-flex'>
-									<div class='greenfont me-2 fw-semibold'>${item.company} </div>
-									<div class='${newFont} text-white rounded-pill p-2 me-2'>${item.new ? 'NEW!' : ''} </div>
-									<div class='${featuredFont} text-white rounded-pill p-2 me-2'>${item.featured ? 'FEATURED' :''}</div>
+								    <p class='greenfont me-2 fw-semibold'>${item.company} </p>
+									<p class='${newFont} text-white rounded-pill p-2 me-2'>${item.new ? 'NEW!' : ''} </p>
+									<p class='${featuredFont} text-white rounded-pill p-2 me-2'>${item.featured ? 'FEATURED' :''}</p>
 								</div>
 								<div class='greenfont__hover fw-bold mt-2'>
 									${item.position}
@@ -100,16 +102,16 @@ const addListings=(which)=>{
 								</div>
 						</div>
 				</div>
-				<ul  role="presentation" class='noborder ms-md-5 d-flex align-self-md-center nav nav-tabs pt-2'>
-					<li role="presentation" class="nav-item"><a href='#'  class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.role}</a></li>
-					<li role="presentation" class="nav-item"><a href='#' class="nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.level}</a></li>
-					<li role="presentation" class='nav-item d-flex'>${item.languages.map(elmt => `
-						<a href='#' class='nav-link search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2'>${elmt}</a>
-					`).join('')}</li>
-					<li role="presentation" class='nav-item d-flex'>${item.tools.map(elmt => `
-						<a href='#' class='nav-link search-item lightgreenbg tabBgHover fw-bold greenfont mb-2 me-2'>${elmt}</a>
-					`).join('')}</li>
-				</ul>
+				<div  role="presentation" class='noborder ms-md-5 d-flex align-self-md-center nav nav-tabs pt-2'>
+					<button  class="search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.role}</button>
+					<button class="search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2">${item.level}</button>
+					<div class='d-flex'>${item.languages.map(elmt => `
+						<button class='search-item lightgreenbg tabBgHover greenfont fw-bold mb-2 me-2'>${elmt}</button>
+					`).join('')}</div>
+					<div class='d-flex'>${item.tools.map(elmt => `
+						<button class='search-item lightgreenbg tabBgHover fw-bold greenfont mb-2 me-2'>${elmt}</button>
+					`).join('')}</div>
+				</div>
 		    </section>
 	    `;
 	  });
