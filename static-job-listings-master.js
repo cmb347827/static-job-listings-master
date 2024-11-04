@@ -15,7 +15,14 @@ let vars={
 	filterData:[],
 	clearBtnAdded: false,
 }
-
+/*function getJson() {
+    return fetch('https://raw.githubusercontent.com/cmb347827/static-job-listings-master/refs/heads/main/data.json')
+     .then(response => response.json())
+     .then(response =>  response)
+     .catch(err => {
+       console.error(err);
+     });  
+}*/
 
 async function fetchAsync () {
 	// await response of fetch call
@@ -59,8 +66,8 @@ const filterData =()=>{
 	});
 	console.log('filterdata',vars.filterData);
 };
-const addListings=(which)=>{
-	  
+const  addListings=(which)=>{
+	  //elements.data = await(getJson());
 	  //add job listings from json data
 	  //console.log('vars filterdata',vars.filterData);
 	  const data= (which==='non-filtered') ? elements.data : vars.filterData;
@@ -69,7 +76,7 @@ const addListings=(which)=>{
 	  elements.listingsContainer.innerHTML='';
 	  elements.resultsContainer.innerHTML='';
 	  //clear filterData for next time the user adds a searchterm, and a new addListings() will be called with new filterdata including the new searchterm results
-	  vars.filterData=[];  
+	  vars.filterData=[];  let array= [];
 	  let addFeaturedBorder; let newFont; let featuredFont;
 
       data.forEach((item,index)=>{
@@ -77,8 +84,8 @@ const addListings=(which)=>{
         addFeaturedBorder = item.featured ? 'addFeaturedBorder' :'';
         newFont = item.new ? 'newFont' : '';
 		featuredFont= item.featured ? 'featuredFont' : '';
-
-		container.innerHTML += `
+   
+		array.push( `
 		    <section title='Job listing' class=' ${addFeaturedBorder} d-flex flex-md-row flex-column justify-content-md-between align-items-md-center me-2 '>
 				<h4 class='visually-hidden'>${item.company} </h4>
 			    <div class='d-flex flex-md-row align-items-md-center flex-column'>
@@ -112,8 +119,9 @@ const addListings=(which)=>{
 					`).join('')}</div>
 				</div>
 		    </section>
-	    `;
+	    `);
 	  });
+      container.innerHTML = array.join(' ');
 	  addListener(); 
 };
 
@@ -218,6 +226,6 @@ function addListener(){
 $(window).on('load',function(){
 	fetchAsync();
 	$('#header').attr('aria-hidden','true');
-    
+    //addListings('non-filtered');
 
 });
