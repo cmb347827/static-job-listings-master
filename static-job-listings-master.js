@@ -76,7 +76,7 @@ const  addListings=(which)=>{
 		featuredFont= item.featured ? 'featuredFont' : '';
    
 		array.push( `
-		    <section title='Job listing' class=' ${addFeaturedBorder} d-flex flex-md-row flex-column justify-content-md-between align-items-md-center me-2 '>
+		    <section class=' ${addFeaturedBorder} d-flex flex-md-row flex-column justify-content-md-between align-items-md-center me-2 '>
 				<h3 class='visually-hidden'>${item.company} </h3>
 			    <div class='d-flex flex-md-row align-items-md-center flex-column'>
 				        <div class='svg-logo-outer'>
