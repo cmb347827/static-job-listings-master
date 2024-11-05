@@ -77,7 +77,7 @@ const  addListings=(which)=>{
    
 		array.push( `
 		    <section title='Job listing' class=' ${addFeaturedBorder} d-flex flex-md-row flex-column justify-content-md-between align-items-md-center me-2 '>
-				<h4 class='visually-hidden'>${item.company} </h4>
+				<h3 class='visually-hidden'>${item.company} </h3>
 			    <div class='d-flex flex-md-row align-items-md-center flex-column'>
 				        <div class='svg-logo-outer'>
 						   <img src='${item.logo}' alt='Company logo' class='svg-100 me-4'>
