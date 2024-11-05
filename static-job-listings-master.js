@@ -15,14 +15,6 @@ let vars={
 	filterData:[],
 	clearBtnAdded: false,
 }
-/*function getJson() {
-    return fetch('https://raw.githubusercontent.com/cmb347827/static-job-listings-master/refs/heads/main/data.json')
-     .then(response => response.json())
-     .then(response =>  response)
-     .catch(err => {
-       console.error(err);
-     });  
-}*/
 
 async function fetchAsync () {
 	// await response of fetch call
@@ -67,9 +59,7 @@ const filterData =()=>{
 	console.log('filterdata',vars.filterData);
 };
 const  addListings=(which)=>{
-	  //elements.data = await(getJson());
 	  //add job listings from json data
-	  //console.log('vars filterdata',vars.filterData);
 	  const data= (which==='non-filtered') ? elements.data : vars.filterData;
 	  const container = (vars.filterData.length>0) ? elements.resultsContainer : elements.listingsContainer;
 	  //clear results/listingsContainer.innerHTML for new reload
@@ -121,7 +111,7 @@ const  addListings=(which)=>{
 		    </section>
 	    `);
 	  });
-      container.innerHTML = array.join(' ');
+     container.innerHTML = array.join(' ');
 	  addListener(); 
 };
 
@@ -163,7 +153,6 @@ function addFilter(linktext) {
 					    <output name='result' for='search-term${vars.filterId}'>${linktext}<button data-remove-button-id="${vars.filterId}" type='button' class='btn close'><i class="fa-solid fa-square-xmark"></i></button>
 						</output>
 					</form>`;
-	//vars.filterTabs.push(output);
 	//add the new filter tab 
 	elements.filters.insertAdjacentHTML("afterbegin", output );
 	//create a clear button element
@@ -185,7 +174,6 @@ function addFilter(linktext) {
 const removeFilter =(linktext)=>{
 	return function curried_func(e) {
 		//delete filter tab at page top output 
-		
 		e.currentTarget.parentElement.parentElement.remove();
 		//find index of search term in allSearchTerms in order to delete it from array , so its possible to reselect the same term again.
 		let indexSearchTerm= vars.allSearchTerms.indexOf(linktext);
@@ -226,6 +214,5 @@ function addListener(){
 $(window).on('load',function(){
 	fetchAsync();
 	$('#header').attr('aria-hidden','true');
-    //addListings('non-filtered');
 
 });
