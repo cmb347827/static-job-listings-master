@@ -16,13 +16,21 @@ let vars={
 	clearBtnAdded: false,
 }
 
-async function fetchAsync () {
+/*async function fetchAsync () {
 	// await response of fetch call
 	let response = await fetch('https://raw.githubusercontent.com/cmb347827/static-job-listings-master/refs/heads/main/data.json');
 	// only proceed once promise is resolved
 	elements.data= await response.json()
 	// only proceed once second promise is resolved
 	addListings('non-filtered');
+}*/
+function fetchAsync(){
+	fetch("https://raw.githubusercontent.com/cmb347827/static-job-listings-master/refs/heads/main/data.json")
+   .then((response) => response.json())
+   .then((data) => {
+    elements.data = data;
+	addListings('non-filtered');
+  });
 }
 
 const filterData =()=>{
