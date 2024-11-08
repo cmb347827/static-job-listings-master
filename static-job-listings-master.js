@@ -68,8 +68,8 @@ const filterData =()=>{
 };
 const  addListings=(which)=>{
 	  //add job listings from json data
-	  //const data= (which==='non-filtered') ? elements.data : vars.filterData;
-	  //const container = (vars.filterData.length>0) ? elements.resultsContainer : elements.listingsContainer;
+	  const data= (which==='non-filtered') ? elements.data : vars.filterData;
+	  const container = (vars.filterData.length>0) ? elements.resultsContainer : elements.listingsContainer;
 	  //clear results/listingsContainer.innerHTML for new reload
 	  elements.listingsContainer.innerHTML='';
 	  elements.resultsContainer.innerHTML='';
@@ -78,7 +78,7 @@ const  addListings=(which)=>{
 	  let addFeaturedBorder; let newFont; let featuredFont;
     
 	  
-      elements.data.forEach((item,index)=>{
+      data.forEach((item,index)=>{
 		//some items may not include, featured or new, so add classes based on if they are included or not only.
         addFeaturedBorder = item.featured ? 'addFeaturedBorder' :'';
         newFont = item.new ? 'newFont' : '';
@@ -120,7 +120,8 @@ const  addListings=(which)=>{
 		    </section>
 	    `);
 	  });
-	  elements.listingsContainer.innerHTML = array.join(' ');
+	  //container.innerHTML = array.join(' ');
+	  $(container).append(array.join(''));
 	  addListener(); 
 };
 
