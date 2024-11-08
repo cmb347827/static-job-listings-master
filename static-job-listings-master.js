@@ -28,9 +28,9 @@ function fetchAsync(){
 	fetch("https://raw.githubusercontent.com/cmb347827/static-job-listings-master/refs/heads/main/data.json")
    .then((response) => response.json())
    .then((data) => {
-    elements.data = data;
-	addListings('non-filtered');
-  });
+      elements.data = data;
+	  addListings('non-filtered');
+    });
 }
 
 const filterData =()=>{
@@ -68,16 +68,17 @@ const filterData =()=>{
 };
 const  addListings=(which)=>{
 	  //add job listings from json data
-	  const data= (which==='non-filtered') ? elements.data : vars.filterData;
-	  const container = (vars.filterData.length>0) ? elements.resultsContainer : elements.listingsContainer;
+	  //const data= (which==='non-filtered') ? elements.data : vars.filterData;
+	  //const container = (vars.filterData.length>0) ? elements.resultsContainer : elements.listingsContainer;
 	  //clear results/listingsContainer.innerHTML for new reload
 	  elements.listingsContainer.innerHTML='';
 	  elements.resultsContainer.innerHTML='';
 	  //clear filterData for next time the user adds a searchterm, and a new addListings() will be called with new filterdata including the new searchterm results
 	  vars.filterData=[];  let array= [];
 	  let addFeaturedBorder; let newFont; let featuredFont;
-
-      data.forEach((item,index)=>{
+    
+	  
+      elements.data.forEach((item,index)=>{
 		//some items may not include, featured or new, so add classes based on if they are included or not only.
         addFeaturedBorder = item.featured ? 'addFeaturedBorder' :'';
         newFont = item.new ? 'newFont' : '';
@@ -119,7 +120,7 @@ const  addListings=(which)=>{
 		    </section>
 	    `);
 	  });
-     container.innerHTML = array.join(' ');
+	  elements.listingsContainer.innerHTML = array.join(' ');
 	  addListener(); 
 };
 
