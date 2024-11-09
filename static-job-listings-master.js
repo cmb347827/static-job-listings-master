@@ -70,6 +70,7 @@ const filterData =()=>{
 const  addListings=(which)=>{
 	  //add job listings from json data
 	  //const data= (which==='non-filtered') ? elements.data : vars.filterData;
+	  let data=[];
 	  if(which==='filtered'){
 		 data= JSON.parse(localStorage.getItem('filtered'));
 	  } else{ 
