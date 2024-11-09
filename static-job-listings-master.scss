@@ -127,6 +127,9 @@ html{
       .lightgreenbg{
         @include bg-color(map-get($colors,Light Grayish Cyan),nth($fallback-color,1));
       }
+      main{
+        min-height: 100em;
+      }
       section,header{
           @include padding(0.4em);
           @include margin(1em 0);
