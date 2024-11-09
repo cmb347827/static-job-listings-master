@@ -6,11 +6,6 @@ html {
 ::after {
   box-sizing: inherit; }
 
-body {
-  font-family: "League Spartan", sans-serif;
-  font-size: 15px;
-  font-weight: 400; }
-
 .top-z-index {
   position: relative;
   z-index: 1;
@@ -88,6 +83,8 @@ body {
   .outer .lightgreenbg {
     background-color: PaleTurquoise;
     background-color: #effafa; }
+  .outer main {
+    min-height: 120em; }
   .outer section, .outer header {
     padding: 0.4em;
     margin: 1em 0; }
