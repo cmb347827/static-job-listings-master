@@ -150,6 +150,7 @@ const clearFilters=()=>{
 	}
     //clear filterData for next time the user adds a searchterm, and a new addListings() will be called with new filterdata including the new searchterm results
 	vars.filterData=[]; 
+	localStorage.clear();
 	vars.allSearchTerms=[];
 	vars.filterId= 0;
 	elements.filters.innerHTML='';

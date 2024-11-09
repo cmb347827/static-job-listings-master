@@ -43,15 +43,7 @@ html{
 ::after {
   box-sizing: inherit;
 }
-body{
-  font: {
-    //default 16 px/1rem.
-    family: "League Spartan", sans-serif;
-    size: 15px;
-    weight: $font_weight-normal;
-    
-  }
-}
+
 .top-z-index{
   //needed for z-index.
   position: relative;
