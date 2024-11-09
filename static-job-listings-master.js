@@ -65,11 +65,16 @@ const filterData =()=>{
 		   }
 		});
 	});
-	console.log('filterdata',vars.filterData);
+	localStorage.setItem('filtered',JSON.stringify(vars.filterData));
 };
 const  addListings=(which)=>{
 	  //add job listings from json data
-	  const data= (which==='non-filtered') ? elements.data : vars.filterData;
+	  //const data= (which==='non-filtered') ? elements.data : vars.filterData;
+	  if(which==='filtered'){
+		 data= JSON.parse(localStorage.getItem('filtered'));
+	  } else{ 
+		 data= elements.data;
+	  }
 	  const container = (vars.filterData.length>0) ? elements.resultsContainer : elements.listingsContainer;
 	  //clear results/listingsContainer.innerHTML for new reload
 	  elements.listingsContainer.innerHTML='';
