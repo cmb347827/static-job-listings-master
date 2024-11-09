@@ -17,24 +17,35 @@ let vars={
 	filterBtns: [],
 }
 
-async function fetchAsync () {
+/*async function fetchAsync () {
 	// await response of fetch call
 	let response = await fetch('https://raw.githubusercontent.com/cmb347827/static-job-listings-master/refs/heads/main/data.json');
 	// only proceed once promise is resolved
-	elements.data= await response.json();
+	elements.data= await response.json()
+	// only proceed once second promise is resolved
+	addListings('non-filtered');
+}*/
+function fetchAsync(){
+	fetch("https://raw.githubusercontent.com/cmb347827/static-job-listings-master/refs/heads/main/data.json")
+   .then((response) => response.json())
+   .then((data) => {
+      elements.data = data;
+	  addListings('non-filtered');
+    });
 }
-
 
 const filterData =()=>{
 	let included=false;
 	
 	elements.data.forEach((outeritem)=>{
 		included=vars.allSearchTerms.includes(outeritem.role);
+		//console.log('item',item.role, 'included',included);
 		if(included) {
 			vars.filterData.push(outeritem);
 			return included;
 		}
 		included=vars.allSearchTerms.includes(outeritem.level);
+		//console.log('item',item.level, 'included',included);
 		if(included) {
 			vars.filterData.push(outeritem);
 			return included;
@@ -54,16 +65,11 @@ const filterData =()=>{
 		   }
 		});
 	});
-	localStorage.setItem("filtered", JSON.stringify(vars.filterData));
+	console.log('filterdata',vars.filterData);
 };
 const  addListings=(which)=>{
 	  //add job listings from json data
-	  let data=[];
-	  if(which==='non-filtered'){
-		data = elements.data;
-	  } else if(which==='filtered'){
-		data = JSON.parse(localStorage.getItem("filtered"));
-	  }
+	  const data= (which==='non-filtered') ? elements.data : vars.filterData;
 	  const container = (vars.filterData.length>0) ? elements.resultsContainer : elements.listingsContainer;
 	  //clear results/listingsContainer.innerHTML for new reload
 	  elements.listingsContainer.innerHTML='';
@@ -115,7 +121,7 @@ const  addListings=(which)=>{
 		    </section>
 	    `);
 	  });
-	  
+	  //container.innerHTML = array.join(' ');
 	  $(container).append(array.join(''));
 	  addListener(); 
 };
@@ -138,7 +144,6 @@ const clearFilters=()=>{
 	}
     //clear filterData for next time the user adds a searchterm, and a new addListings() will be called with new filterdata including the new searchterm results
 	vars.filterData=[]; 
-	localStorage.clear();
 	vars.allSearchTerms=[];
 	vars.filterId= 0;
 	elements.filters.innerHTML='';
@@ -220,7 +225,6 @@ function addListener(){
 
 $(window).on('load',function(){
 	fetchAsync();
-	addListings('non-filtered');
 	$('#header').attr('aria-hidden','true');
 
 });
