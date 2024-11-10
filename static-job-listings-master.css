@@ -84,7 +84,7 @@ html {
     background-color: PaleTurquoise;
     background-color: #effafa; }
   .outer main {
-    min-height: 120em; }
+    min-height: 135em; }
   .outer section, .outer header {
     padding: 0.4em;
     margin: 1em 0; }
@@ -103,7 +103,7 @@ html {
         padding: 1em; } }
   .outer section {
     padding: 1em;
-    min-height: 10em;
+    min-height: 12em;
     box-shadow: 15px 5px 5px #eef6f6;
     background-color: PaleTurquoise;
     background-color: white; }
