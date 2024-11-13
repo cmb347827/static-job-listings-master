@@ -44,12 +44,7 @@ html{
   box-sizing: inherit;
 }
 
-.top-z-index{
-  //needed for z-index.
-  position: relative;
-  z-index: 1;
-  opacity:1;
-}
+
 .svg-logo-outer{
     position:relative;
     top: -2em;
@@ -98,7 +93,12 @@ html{
       .banner{
           height: fit-content;
       }
-      
+      @font-face {
+        font-size: 15px;
+        font-weight: normal;
+        font-family: "League Spartan", sans-serif;
+        src:local("./fonts/LeagueSpartan-VariableFont_wght.ttf");
+      }
       .visuallyhidden {
         position: absolute;
         width: 1px;
