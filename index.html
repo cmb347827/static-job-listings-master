@@ -6,12 +6,6 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/yxgKFKLM/favicon-32x32.png">
   <style>
-            @font-face {
-              font-size: 15px;
-              font-weight: normal;
-              font-family: "League Spartan", sans-serif;
-              src:local("./fonts/LeagueSpartan-VariableFont_wght.ttf");
-            }
             :root {
               --bs-breakpoint-xs: 0;
               --bs-breakpoint-sm: 576px;
@@ -139,92 +133,16 @@
             --bs-form-invalid-color: #dc3545;
             --bs-form-invalid-border-color: #dc3545
         }
-        @media (prefers-reduced-motion:no-preference) {
-            :root {
-                scroll-behavior: smooth
-            }
-        }
-        body {
-              margin: 0;
-              font-family: var(--bs-body-font-family);
-              font-size: var(--bs-body-font-size);
-              font-weight: var(--bs-body-font-weight);
-              line-height: var(--bs-body-line-height);
-              color: var(--bs-body-color);
-              text-align: var(--bs-body-text-align);
-              background-color: var(--bs-body-bg);
-              -webkit-text-size-adjust: 100%;
-              -webkit-tap-highlight-color: transparent
-        }
-        .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
-              margin-top: 0;
-              margin-bottom: .5rem;
-              font-weight: 500;
-              line-height: 1.2;
-              color: var(--bs-heading-color)
-          }
-
-          .h1,h1 {
-              font-size: calc(1.375rem + 1.5vw)
-          }
-          .h2,h2 {
-              font-size: calc(1.325rem + .9vw)
-          }
-          .h3,h3 {
-              font-size: calc(1.3rem + .6vw)
-          }
-          p {
-              margin-top: 0;
-              margin-bottom: 1rem
-          }
-          address {
-              margin-bottom: 1rem;
-              font-style: normal;
-              line-height: inherit
-          }
+        
+        
           img,svg {
               vertical-align: middle
-          }
-          button,input,optgroup,select,textarea {
-              margin: 0;
-              font-family: inherit;
-              font-size: inherit;
-              line-height: inherit
           }
 
           button,select {
               text-transform: none
           }
-          [type=button],[type=reset],[type=submit],button {
-              -webkit-appearance: button
-          }
 
-          [type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled) {
-              cursor: pointer
-          }
-          .nav {
-            --bs-nav-link-padding-x: 1rem;
-            --bs-nav-link-padding-y: 0.5rem;
-            --bs-nav-link-font-weight: ;
-            --bs-nav-link-color: var(--bs-link-color);
-            --bs-nav-link-hover-color: var(--bs-link-hover-color);
-            --bs-nav-link-disabled-color: var(--bs-secondary-color);
-            display: flex;
-            flex-wrap: wrap;
-            padding-left: 0;
-            margin-bottom: 0;
-            list-style: none
-        }
-        .nav-tabs {
-            --bs-nav-tabs-border-width: var(--bs-border-width);
-            --bs-nav-tabs-border-color: var(--bs-border-color);
-            --bs-nav-tabs-border-radius: var(--bs-border-radius);
-            --bs-nav-tabs-link-hover-border-color: var(--bs-secondary-bg) var(--bs-secondary-bg) var(--bs-border-color);
-            --bs-nav-tabs-link-active-color: var(--bs-emphasis-color);
-            --bs-nav-tabs-link-active-bg: var(--bs-body-bg);
-            --bs-nav-tabs-link-active-border-color: var(--bs-border-color) var(--bs-border-color) var(--bs-body-bg);
-            border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color)
-        }
         .visually-hidden,.visually-hidden-focusable:not(:focus):not(:focus-within) {
               width: 1px!important;
               height: 1px!important;
@@ -251,21 +169,11 @@
           .align-items-center {
             align-items: center!important
           }
-          .mt-2 {
-            margin-top: .5rem!important
-         }
          .mt-4 {
               margin-top: 1.5rem!important
           }
-
-          .mt-5 {
-              margin-top: 3rem!important
-          }
           .me-2 {
               margin-right: .5rem!important
-          }
-          .me-4 {
-              margin-right: 1.5rem!important
           }
           .mb-2 {
               margin-bottom: .5rem!important
@@ -273,22 +181,8 @@
           .p-2 {
               padding: .5rem!important
           }
-          .pt-2 {
-              padding-top: .5rem!important
-          }
-          .pb-3 {
-              padding-bottom: 1rem!important
-          }
-          .fw-medium {
-              font-weight: 500!important
-          }
-
           .fw-semibold {
               font-weight: 600!important
-          }
-
-          .fw-bold {
-              font-weight: 700!important
           }
           .text-center {
               text-align: center!important
@@ -297,6 +191,7 @@
               border-radius: var(--bs-border-radius-pill)!important
           }
           
+    </style>
     </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel='stylesheet' href='static-job-listings-master.css' type='text/css'>
