@@ -102,10 +102,10 @@ Users should be able to:
 - Daily tutorials and projects in HTML5, CSS3, Javascript, Bootstrap, Sass/SCSS. For now, in time I will go re-learn React ect.
 
 ### Useful resources
-[preserve input values after dynamically adding elements] (https://stackoverflow.com/questions/30798315/preserve-input-values-after-dynamically-adding-an-input-field)
-[template literals to insert iterated array values] (https://stackoverflow.com/questions/50574786/simple-javascript-template-literals-to-insert-iterated-values-e-g-array-elemen)
-[addEventListener to button inside template literal] (https://stackoverflow.com/questions/53556671/add-event-listener-to-button-inside-template-literal)
-[shortciruit forEach] (https://stackoverflow.com/questions/2641347/short-circuit-array-foreach-like-calling-break)
+[preserve input values after dynamically adding elements](https://stackoverflow.com/questions/30798315/preserve-input-values-after-dynamically-adding-an-input-field).
+[template literals to insert iterated array values](https://stackoverflow.com/questions/50574786/simple-javascript-template-literals-to-insert-iterated-values-e-g-array-elemen).
+[addEventListener to button inside template literal](https://stackoverflow.com/questions/53556671/add-event-listener-to-button-inside-template-literal).
+[shortciruit forEach](https://stackoverflow.com/questions/2641347/short-circuit-array-foreach-like-calling-break)
 
 ## Author
 
